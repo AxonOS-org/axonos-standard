@@ -35,8 +35,14 @@ readme = (ROOT / "README.md").read_text(encoding="utf-8")
 if "AxonOS Standard" not in readme:
     print("ERROR: README missing AxonOS Standard", file=sys.stderr)
     sys.exit(1)
+
 if "Neural data is not application data" not in readme:
     print("ERROR: README missing core principle", file=sys.stderr)
+    sys.exit(1)
+
+ci = (ROOT / ".github/workflows/ci.yml").read_text(encoding="utf-8")
+if "\n" not in ci or "standard-contract" not in ci:
+    print("ERROR: CI workflow malformed", file=sys.stderr)
     sys.exit(1)
 
 disamb = (ROOT / "legal/disambiguation.md").read_text(encoding="utf-8")

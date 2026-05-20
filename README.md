@@ -1,5 +1,7 @@
 # AxonOS Standard
 
+[![CI](https://github.com/AxonOS-org/axonos-standard/actions/workflows/ci.yml/badge.svg)](https://github.com/AxonOS-org/axonos-standard/actions/workflows/ci.yml)
+
 **The canonical technical standard for deterministic brain-computer interface software.**
 
 AxonOS defines the missing operating layer between neural hardware and intelligent applications: a deterministic, privacy-preserving, capability-gated software foundation for brain-computer interface systems.
