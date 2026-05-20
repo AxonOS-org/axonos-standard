@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  standard-contract:
-    name: standard contract
+  standard-integrity:
+    name: standard integrity
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -19,33 +19,5 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Verify AxonOS Standard contract
-        run: python3 tools/verify_standard_contract.py
-
-  standard-artifacts:
-    name: standard artifacts
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
-      - name: Verify chronological AOS artifacts
-        run: python3 tools/verify_standard_artifacts.py
-
-  normative-chapters:
-    name: normative chapters
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
-      - name: Verify expanded normative chapters
-        run: python3 tools/verify_normative_chapters.py
+      - name: Verify AxonOS Standard integrity
+        run: python3 tools/verify_standard_integrity.py

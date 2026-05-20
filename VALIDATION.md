@@ -1,7 +1,16 @@
 # Validation
 
-AxonOS uses evidence levels to avoid confusing design intent, analytical work,
-runtime measurement, external instrumentation, independent review, and regulatory
-certification.
+The canonical validation model is defined in
+`standard/AOS-0003-evidence-levels-and-claims.md`.
 
-The canonical validation artifact is `standard/AOS-0003-evidence-levels-and-claims.md`.
+AxonOS uses evidence levels to distinguish:
+
+- design intent;
+- analytical/code-level evidence;
+- runtime measurement;
+- external instrumentation;
+- independent review;
+- regulatory or certification evidence.
+
+A claim should include value, evidence level, artifact, status, limitations, and
+falsification threshold where applicable.

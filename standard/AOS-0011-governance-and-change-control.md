@@ -8,65 +8,50 @@ Normative force: draft language only until AxonOS Standard v1.0.
 
 AOS-0011 defines draft governance and change-control expectations.
 
-## 2. Scope
+Standards require an auditable process for changes, disputes, and maturity
+transitions.
 
-This artifact defines draft standard semantics for AxonOS implementations. It is not a clinical protocol, regulatory approval, or certification claim. It exists to make implementation claims explicit, reviewable, and testable.
+## 2. Change classes
 
-AxonOS repositories should reference this artifact when their README, API, tests, or documentation make claims in this area.
+Changes may be editorial, clarifying, normative, compatibility-impacting,
+security-impacting, or deprecating.
 
+Normative and compatibility-impacting changes require explicit review.
 
-## 3. Change classes
+## 3. Decision model
 
-Changes may be editorial, clarifying, normative, compatibility-impacting, security-impacting, or deprecating.
+Draft 0.1 uses maintainer-led review. Later versions should define steward
+roles, review board composition, voting or consensus thresholds, and appeals.
 
-## 4. Decision model
+## 4. RFC integration
 
-Draft 0.1 uses maintainer-led review. Future versions should define steward roles, review board composition, thresholds, and appeals.
+Standard-impacting changes should originate in or link to RFCs. RFCs should
+state motivation, affected artifacts, safety/privacy impact, validation impact,
+migration notes, and implementation status.
 
-## 5. RFC integration
+## 5. Versioning
 
-Standard-impacting changes should originate in or link to RFCs.
+The standard should use draft versions before v1.0. Stable releases should be
+tagged. Breaking normative changes require version increments and migration
+notes.
 
-## 6. Versioning
+## 6. Audit trail
 
-The standard should use draft versions before v1.0. Stable releases should be tagged.
+External critiques, remediation plans, and accepted findings should be preserved
+in a way that strengthens governance without making the repository appear
+unmaintained or self-contradictory.
 
-## 7. Audit trail
+## 7. Requirements
 
-External critiques, remediation plans, and accepted findings should be preserved in a way that strengthens governance.
+Draft alignment requires classified changes, versioned releases, remediation
+records, and traceability for normative modifications.
 
-## 8. Draft requirements
+## 8. Non-conformance examples
 
-A draft implementation aligned with this artifact should satisfy:
+Silent breaking changes, no version for a standard release, ignored critical
+audit, normative changes only in README, or unclear maintainer authority are not
+aligned.
 
-1. Classify standard changes.
-2. Use RFCs or equivalent review for normative changes.
-3. Version stable releases.
-4. Record remediation of accepted critiques.
-5. Do not silently rewrite conformance semantics.
+## 9. Summary
 
-## 9. Minimum verification expectations
-
-1. CHANGELOG exists.
-2. VERSION exists.
-3. REMEDIATION exists.
-4. CI checks artifact presence.
-5. Governance docs update with material changes.
-
-## 10. Non-conformance examples
-
-The following are examples of non-conforming or misleading use:
-
-1. Silent breaking change to conformance profile.
-2. No version for standard release.
-3. Critical audit ignored or deleted without response.
-4. Normative change made only in README.
-5. Unclear maintainer authority.
-
-## 11. Open issues
-
-Draft 0.1 intentionally leaves some details unresolved. Future revisions may add machine-readable schemas, test vectors, stricter conformance profiles, and implementation-version mappings. Any promotion from draft text to normative text must be recorded through the governance process.
-
-## 12. Summary
-
-This artifact defines one part of the AxonOS Standard boundary. It should be read together with AOS-0000 through AOS-0011 and the repository-level `CONFORMANCE.md`, `VALIDATION.md`, and `GOVERNANCE.md` documents.
+Governance is the safety mechanism for the standard itself.

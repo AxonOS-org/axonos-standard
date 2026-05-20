@@ -5,12 +5,15 @@
 ### Added
 
 - Chronological AOS artifact sequence AOS-0000 through AOS-0011.
-- `tools/verify_standard_artifacts.py`.
-- `tools/verify_standard_contract.py`.
-- `tools/verify_normative_chapters.py`.
-- CI jobs for standard contract, standard artifacts, and normative chapters.
+- CI verifiers for standard integrity.
+- Full MIT license text.
+- Reading order for engineers, safety reviewers, and institutional reviewers.
+- Expanded IPC/timing and security/privacy artifacts.
+- Redirect notices for legacy navigation directories.
 
 ### Fixed
 
-- Missing verifier referenced by CI.
-- Non-chronological or incomplete AOS artifact layout.
+- Broken one-line Markdown rendering.
+- Missing `tools/verify_standard_artifacts.py`.
+- Overlinked top-level README.
+- Placeholder-style artifact layout.

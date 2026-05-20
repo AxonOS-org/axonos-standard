@@ -8,65 +8,46 @@ Normative force: draft language only until AxonOS Standard v1.0.
 
 AOS-0006 defines draft AxonOS conformance profiles.
 
-## 2. Scope
+Profiles make claims specific. A repository may align with documentation,
+SDK boundary, kernel substrate, consent semantics, or validation discipline.
 
-This artifact defines draft standard semantics for AxonOS implementations. It is not a clinical protocol, regulatory approval, or certification claim. It exists to make implementation claims explicit, reviewable, and testable.
+## 2. Profile S0 — Documentation alignment
 
-AxonOS repositories should reference this artifact when their README, API, tests, or documentation make claims in this area.
+S0 means the repository uses AxonOS terminology, links to the standard, states
+maturity, and avoids clinical or regulatory overclaim.
 
+## 3. Profile S1 — SDK boundary compatibility
 
-## 3. Profile S0
+S1 means the implementation emits or consumes typed intent events, uses explicit
+capabilities or manifests, denies raw data by default, and documents ABI or
+serialization assumptions.
 
-S0 means documentation alignment: terminology, status, standard link, and no overclaim.
+## 4. Profile K1 — Kernel substrate compatibility
 
-## 4. Profile S1
+K1 means the implementation defines bounded scheduling, monotonic time, bounded
+IPC, unsafe surface, and evidence for timing claims.
 
-S1 means SDK boundary compatibility: typed events, explicit manifests, raw-data denial by default, and documented ABI assumptions.
+## 5. Profile C1 — Consent semantics compatibility
 
-## 5. Profile K1
+C1 means explicit state machine, terminal withdrawal, suspension and expiry
+denial, no application override, and invalid escalation tests.
 
-K1 means kernel substrate compatibility: bounded scheduling, monotonic time, bounded IPC, unsafe surface, and evidence for timing claims.
+## 6. Profile V1 — Evidence-tagged validation
 
-## 6. Profile C1
+V1 means claims are recorded with value, evidence level, artifact, status,
+limitations, and falsification threshold where applicable.
 
-C1 means consent semantics compatibility: explicit state machine, terminal withdrawal, denial semantics, and invalid escalation tests.
+## 7. Requirements
 
-## 7. Profile V1
+Repositories should state claimed profile, known gaps, artifacts, tests, and
+evidence level.
 
-V1 means evidence-tagged validation discipline.
+## 8. Non-conformance examples
 
-## 8. Draft requirements
+Claiming AxonOS conformance with no profile, claiming kernel conformance from a
+gateway repository, or claiming certification through draft profiles is not
+aligned.
 
-A draft implementation aligned with this artifact should satisfy:
+## 9. Summary
 
-1. State conformance profile explicitly.
-2. Do not imply final conformance while Draft 0.1 is active.
-3. Map repository claims to at least one profile.
-4. Provide tests or artifacts for claimed profile.
-5. State known gaps.
-
-## 9. Minimum verification expectations
-
-1. README lists profile and status.
-2. Conformance checks link to artifacts.
-3. CI verifies AOS artifact set.
-4. Claims register maps evidence.
-5. Known gaps are documented.
-
-## 10. Non-conformance examples
-
-The following are examples of non-conforming or misleading use:
-
-1. Claiming AxonOS conformance with no profile.
-2. Claiming kernel conformance from gateway repo.
-3. Claiming consent conformance without terminal withdrawal tests.
-4. Claiming validation discipline without claims register.
-5. Claiming certification through draft profiles.
-
-## 11. Open issues
-
-Draft 0.1 intentionally leaves some details unresolved. Future revisions may add machine-readable schemas, test vectors, stricter conformance profiles, and implementation-version mappings. Any promotion from draft text to normative text must be recorded through the governance process.
-
-## 12. Summary
-
-This artifact defines one part of the AxonOS Standard boundary. It should be read together with AOS-0000 through AOS-0011 and the repository-level `CONFORMANCE.md`, `VALIDATION.md`, and `GOVERNANCE.md` documents.
+Conformance profiles are not certification. They are a review vocabulary.

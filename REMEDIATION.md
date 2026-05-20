@@ -1,7 +1,7 @@
 # Remediation
 
-External review correctly identified that the initial `axonos-standard` repository
-looked like a skeleton rather than a mature standard.
+External review correctly identified that the initial `axonos-standard`
+repository looked like a skeleton rather than a mature standard.
 
 Accepted findings:
 
@@ -9,7 +9,9 @@ Accepted findings:
 - CI referenced a missing artifact verifier;
 - claims register needed real technical claims;
 - conformance profiles needed explicit structure;
-- license and version status needed to be visible.
+- license and version status needed to be visible;
+- old navigation directories risked confusing readers;
+- AOS-0008 and AOS-0009 needed deeper technical content.
 
-This pack remediates the missing verifier and establishes a chronological AOS
-sequence from AOS-0000 through AOS-0011.
+This remediation path preserves `axonos-standard` as the canonical entry point
+while making its maturity explicit: Draft 0.1, pre-normative, evidence-tagged.

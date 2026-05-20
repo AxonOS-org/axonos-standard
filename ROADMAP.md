@@ -4,19 +4,19 @@
 
 - Establish AOS-0000 through AOS-0011.
 - Repair CI and artifact verification.
-- Replace placeholder standard text with substantive chapters.
+- Replace placeholder text with substantive draft chapters.
 
 ## Phase 2 — Implementation Alignment
 
-- Map repositories to AOS artifacts.
-- Pin implementation versions.
+- Map each implementation repository to AOS artifacts.
+- Pin implementation versions for stable releases.
 - Add conformance test planning.
 
 ## Phase 3 — Validation Artifacts
 
 - Expand claims register.
-- Add trace requirements.
-- Add hardware-in-the-loop evidence format.
+- Add trace artifact format.
+- Add hardware-in-the-loop evidence requirements.
 
 ## Phase 4 — External Review
 

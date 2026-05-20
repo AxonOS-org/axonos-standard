@@ -1,8 +1,9 @@
 # Validation Directory
 
-Canonical validation and claims discipline now lives in:
+This directory is not a separate standard.
 
-- `standard/AOS-0003-evidence-levels-and-claims.md`
-- `validation/claims-register.md`
+Canonical interpretation is maintained through `standard/AOS-0003` and `validation/claims-register.md`.
 
-This directory must not be treated as a separate standard.
+If any file in this directory appears to conflict with an AOS artifact, the
+AOS artifact is the active Draft 0.1 source until the governance process
+says otherwise.

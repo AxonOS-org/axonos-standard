@@ -1,9 +1,9 @@
 # Legal Directory
 
-Canonical disambiguation and attribution notes live here, but normative standard
-content lives in `standard/`.
+This directory is not a separate standard.
 
-See also:
+Canonical interpretation is maintained through `legal/disambiguation.md`, `legal/attribution.md`, and `LICENSE`.
 
-- `legal/disambiguation.md`
-- `LICENSE`
+If any file in this directory appears to conflict with an AOS artifact, the
+AOS artifact is the active Draft 0.1 source until the governance process
+says otherwise.

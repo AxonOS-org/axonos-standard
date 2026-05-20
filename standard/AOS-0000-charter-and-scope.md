@@ -6,63 +6,84 @@ Normative force: draft language only until AxonOS Standard v1.0.
 
 ## 1. Purpose
 
-AOS-0000 defines the charter of the AxonOS Standard: a deterministic software foundation for safe, private, real-time brain-computer interface systems.
+AOS-0000 defines the charter of the AxonOS Standard.
 
-## 2. Scope
+AxonOS is a deterministic operating layer for brain-computer interface software.
+The standard exists because BCI systems require stronger discipline than ordinary
+application stacks: timing errors can affect safety, neural data is unusually
+sensitive, and consent must be enforced below the user interface.
 
-This artifact defines draft standard semantics for AxonOS implementations. It is not a clinical protocol, regulatory approval, or certification claim. It exists to make implementation claims explicit, reviewable, and testable.
+## 2. Mission
 
-AxonOS repositories should reference this artifact when their README, API, tests, or documentation make claims in this area.
+The mission is to establish a technical foundation for safe, private,
+real-time BCI software.
 
+This foundation is expressed through:
 
-## 3. Mission
+- deterministic timing boundaries;
+- neural permissions;
+- consent state semantics;
+- typed intent events;
+- conformance profiles;
+- evidence-tagged validation;
+- security and privacy threat modelling;
+- governance and change control.
 
-The mission of AxonOS is to establish the deterministic operating layer between neural hardware and intelligent applications. BCI software needs stricter boundaries than ordinary application software: neural data is sensitive, timing errors can become safety errors, and consent must be enforceable below the UI.
+## 3. Explicit exclusions
 
-## 4. Explicit exclusions
+AxonOS does not define:
 
-AxonOS does not define a medical treatment protocol, does not claim regulatory approval, does not define a token, and does not define a DAO. A repository may discuss research or prototypes, but it must not represent draft work as certified medical-device infrastructure.
+- a clinical treatment protocol;
+- a medical-device approval;
+- a regulatory certification claim;
+- a token or DAO;
+- a wellness application;
+- a general-purpose AI-agent framework;
+- a proprietary therapeutic waveform.
 
-## 5. Standard maturity
+Repositories may contain research or reference implementations, but research
+artifacts are non-normative until adopted through governance.
 
-Draft 0.1 is pre-normative and appropriate for terminology alignment, architecture review, conformance planning, and reference implementation mapping.
+## 4. Maturity
 
-## 6. Repository classes
+Draft 0.1 is pre-normative. It may be used for architecture alignment and review,
+but it must not be cited as a final conformance standard.
 
-AxonOS repositories are classified as normative, reference, experimental, integration, research, or historical. The class must be visible and must not overstate evidence.
+Final conformance requires:
 
-## 7. Draft requirements
+- stable artifact version;
+- release tag;
+- conformance test suite;
+- implementation mapping;
+- evidence register;
+- governance approval.
 
-A draft implementation aligned with this artifact should satisfy:
+## 5. Repository classes
 
-1. State repository class and status.
-2. State what claims are not being made.
-3. Use evidence levels for technical claims.
-4. Avoid certification, clinical, or final-conformance language without evidence.
-5. Reference `axonos-standard` as the canonical entry point.
+AxonOS repositories should identify themselves as one or more of:
 
-## 8. Minimum verification expectations
+| Class | Meaning |
+|---|---|
+| Normative | defines standard text |
+| Reference | implements part of the standard |
+| Experimental | explores future behavior |
+| Integration | bridges external hardware or tools |
+| Research | provides evidence context |
+| Historical | preserved for audit or compatibility |
 
-1. README contains repository class and status.
-2. Claims register contains only evidence-tagged claims.
-3. Legal disambiguation is present.
-4. Draft status is visible.
-5. CI verifies the required AOS artifact set.
+## 6. Requirements
 
-## 9. Non-conformance examples
+A draft-aligned repository should state its class, maturity, evidence level,
+known non-claims, and relationship to `axonos-standard`.
 
-The following are examples of non-conforming or misleading use:
+## 7. Non-conformance examples
 
-1. Claiming final standard status while Draft 0.1 is active.
-2. Using AxonOS to imply unrelated affiliation.
-3. Presenting a research article as a normative standard.
-4. Treating fundraising as governance.
-5. Claiming clinical readiness without clinical evidence.
+It is misleading to claim final standard status while Draft 0.1 is active, to
+use AxonOS to imply affiliation with unrelated projects, to present a research
+article as a normative specification, or to claim clinical readiness without
+clinical evidence.
 
-## 10. Open issues
+## 8. Summary
 
-Draft 0.1 intentionally leaves some details unresolved. Future revisions may add machine-readable schemas, test vectors, stricter conformance profiles, and implementation-version mappings. Any promotion from draft text to normative text must be recorded through the governance process.
-
-## 11. Summary
-
-This artifact defines one part of the AxonOS Standard boundary. It should be read together with AOS-0000 through AOS-0011 and the repository-level `CONFORMANCE.md`, `VALIDATION.md`, and `GOVERNANCE.md` documents.
+AOS-0000 defines the institutional boundary of the standard: serious, technical,
+pre-normative, evidence-tagged, and deliberately conservative.

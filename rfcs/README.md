@@ -1,8 +1,9 @@
 # RFC Directory
 
-The canonical RFC repository is:
+This directory is not a separate standard.
 
-https://github.com/AxonOS-org/axonos-rfcs
+Canonical interpretation is maintained through `axonos-rfcs` plus the AOS artifact sequence in `standard/`.
 
-Standard-impacting RFCs should link back to the AOS artifacts in `standard/`.
-This directory is a navigation stub, not a second RFC source of truth.
+If any file in this directory appears to conflict with an AOS artifact, the
+AOS artifact is the active Draft 0.1 source until the governance process
+says otherwise.

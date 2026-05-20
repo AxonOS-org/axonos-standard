@@ -8,65 +8,39 @@ Normative force: draft language only until AxonOS Standard v1.0.
 
 AOS-0010 maps the AxonOS Standard to reference repositories.
 
-## 2. Scope
+A standard that cannot map to implementation reality becomes decorative. This
+artifact prevents the standard from floating above the code.
 
-This artifact defines draft standard semantics for AxonOS implementations. It is not a clinical protocol, regulatory approval, or certification claim. It exists to make implementation claims explicit, reviewable, and testable.
+## 2. Mapping fields
 
-AxonOS repositories should reference this artifact when their README, API, tests, or documentation make claims in this area.
+Each repository should map to standard artifacts with role, status, evidence
+level, version or commit, and known gaps.
 
+## 3. Initial repository families
 
-## 3. Mapping table
+The initial families are standard, kernel, RFC, SDK, consent, swarm, and gateway.
 
-Each reference repository should map to standard artifacts and include role, status, evidence level, version or commit, and known gaps.
+## 4. Version pinning
 
-## 4. Canonical repositories
+Draft 0.1 may reference main branches for iteration. Stable conformance must not
+depend on unpinned heads. Future releases should pin tags or commits.
 
-Initial repositories include axonos-standard, axonos-kernel, axonos-rfcs, axonos-sdk, axonos-consent, axonos-swarm, and axon-bci-gateway.
+## 5. Gap disclosure
 
-## 5. Version pinning
+Features should be labelled implemented, simulated, stubbed, pending, or not
+applicable.
 
-Final conformance cannot depend on unpinned repository heads. Draft 0.1 may reference main branches, but future releases should pin tags or commits.
+## 6. Requirements
 
-## 6. Gap disclosure
+Draft alignment requires repository-to-AOS mapping, maturity status, evidence
+level, known gaps, and planned tag policy.
 
-Reference implementations should state whether a feature is implemented, simulated, stubbed, pending, or not applicable.
+## 7. Non-conformance examples
 
-## 7. Evidence linkage
+Treating a gateway as kernel, using unpinned commits for final conformance,
+hiding stubbed features, or claiming implementation maturity without tests is
+not aligned.
 
-Claims in implementation repositories should link back to AOS artifacts and validation records.
+## 8. Summary
 
-## 8. Draft requirements
-
-A draft implementation aligned with this artifact should satisfy:
-
-1. Map each repository to AOS artifacts.
-2. State implementation role and maturity.
-3. Record known gaps.
-4. Pin versions for stable releases.
-5. Do not treat integration forks as kernel implementations.
-
-## 9. Minimum verification expectations
-
-1. Mapping file exists.
-2. README includes reference table.
-3. Claims register references implementation artifacts.
-4. Known gaps are visible.
-5. Release tags are planned.
-
-## 10. Non-conformance examples
-
-The following are examples of non-conforming or misleading use:
-
-1. Floating standard with no implementation mapping.
-2. Gateway treated as kernel.
-3. Unpinned commits used for final conformance.
-4. Stubbed feature presented as implemented.
-5. Known gaps hidden from README.
-
-## 11. Open issues
-
-Draft 0.1 intentionally leaves some details unresolved. Future revisions may add machine-readable schemas, test vectors, stricter conformance profiles, and implementation-version mappings. Any promotion from draft text to normative text must be recorded through the governance process.
-
-## 12. Summary
-
-This artifact defines one part of the AxonOS Standard boundary. It should be read together with AOS-0000 through AOS-0011 and the repository-level `CONFORMANCE.md`, `VALIDATION.md`, and `GOVERNANCE.md` documents.
+Mapping makes the standard auditable.

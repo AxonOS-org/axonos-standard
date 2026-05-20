@@ -8,63 +8,68 @@ Normative force: draft language only until AxonOS Standard v1.0.
 
 AOS-0002 defines canonical terminology used across AxonOS repositories.
 
-## 2. Scope
+A standard fails when the same words mean different things in the kernel, SDK,
+consent layer, gateway, and research artifacts.
 
-This artifact defines draft standard semantics for AxonOS implementations. It is not a clinical protocol, regulatory approval, or certification claim. It exists to make implementation claims explicit, reviewable, and testable.
+## 2. Core terms
 
-AxonOS repositories should reference this artifact when their README, API, tests, or documentation make claims in this area.
+**AxonOS** means the deterministic operating layer for BCI software.
 
+**AxonOS Standard** means the canonical draft standard governing terminology,
+architecture, validation, conformance, neural permissions, and consent
+semantics.
 
-## 3. Core terms
+**Reference implementation** means a public implementation of part of the
+standard. It does not imply certification.
 
-AxonOS is the deterministic operating layer for BCI software. The AxonOS Standard governs terminology, architecture, validation, conformance, neural permissions, and consent semantics.
+## 3. Data terms
 
-## 4. Data terms
+**Neural data** means data derived from neural acquisition hardware before
+application-level redaction or permission filtering.
 
-Neural data means data derived from neural acquisition hardware before application-level redaction or permission filtering. Raw neural data means unredacted samples or equivalent raw sensor streams.
+**Raw neural data** means unredacted samples or equivalent raw sensor streams.
 
-## 5. Timing terms
+**Intent event** means a typed, bounded event derived from neural processing and
+exposed across the application boundary.
 
-WCET means worst-case execution time. WCRT means worst-case response time. A real-time claim without a deadline and bound is not an AxonOS claim.
+## 4. Timing terms
 
-## 6. Security terms
+**WCET** means worst-case execution time under stated assumptions.
 
-Neural permission means typed authority over a neural-derived event class. Capability gate means an enforcement point checking delivery authority.
+**WCRT** means worst-case response time from release to completion under a
+specified scheduling model.
 
-## 7. Evidence terms
+A real-time claim without deadline and bound is not an AxonOS claim.
 
-Evidence level describes how strongly a claim is supported. Reference implementation does not imply certification.
+## 5. Security terms
 
-## 8. Draft requirements
+**Neural permission** means typed authority over a neural-derived event class.
 
-A draft implementation aligned with this artifact should satisfy:
+**Capability gate** means an enforcement point checking whether delivery is
+authorized.
 
-1. Use canonical terms consistently.
-2. Do not use real-time, verified, safe, private, clinical, or certified without scope.
-3. Define new terms before making claims with them.
-4. Link implementation-specific terms back to the standard.
+**Consent state machine** means explicit model of grant, withdrawal, suspension,
+expiry, and fault.
 
-## 9. Minimum verification expectations
+## 6. Evidence terms
 
-1. Glossary contains core terms.
-2. README claims use standard terminology.
-3. CI checks core AOS artifact tokens.
-4. Implementation docs avoid undefined maturity claims.
+**Evidence level** describes how strongly a claim is supported.
 
-## 10. Non-conformance examples
+**Conformance profile** means a named implementation class with testable
+requirements.
 
-The following are examples of non-conforming or misleading use:
+## 7. Requirements
 
-1. Using real-time to mean average latency.
-2. Using verified without verification scope.
-3. Using privacy-preserving without threat model.
-4. Using consent to mean UI checkbox only.
-5. Using standard to mean marketing overview.
+Repositories should use these terms consistently and should not use words such
+as real-time, verified, safe, private, clinical, or certified without scope and
+evidence.
 
-## 11. Open issues
+## 8. Non-conformance examples
 
-Draft 0.1 intentionally leaves some details unresolved. Future revisions may add machine-readable schemas, test vectors, stricter conformance profiles, and implementation-version mappings. Any promotion from draft text to normative text must be recorded through the governance process.
+Using real-time to mean average latency, verified without verification scope,
+privacy-preserving without threat model, or consent to mean UI checkbox only is
+not aligned with this artifact.
 
-## 12. Summary
+## 9. Summary
 
-This artifact defines one part of the AxonOS Standard boundary. It should be read together with AOS-0000 through AOS-0011 and the repository-level `CONFORMANCE.md`, `VALIDATION.md`, and `GOVERNANCE.md` documents.
+Terminology is not cosmetic. It is the first layer of claims discipline.

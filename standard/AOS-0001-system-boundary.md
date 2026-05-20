@@ -1,73 +1,104 @@
 # AOS-0001 — System Boundary
 
 Status: Draft 0.1 — pre-normative.  
-Audience: implementers, reviewers, safety assessors, researchers, and institutional partners.  
+Audience: implementers, reviewers, safety assessors, hardware teams, application developers, and institutional partners.  
 Normative force: draft language only until AxonOS Standard v1.0.
 
 ## 1. Purpose
 
-AOS-0001 defines where AxonOS sits in a BCI system: between neural hardware and applications, below the typed intent boundary, and above acquisition hardware.
+AOS-0001 defines where AxonOS sits in a BCI system.
 
-## 2. Scope
+Most BCI software failures begin as boundary failures. A system that cannot say
+where raw neural data ends, where deterministic processing begins, where
+application behavior is permitted, and where consent is enforced cannot make
+credible safety, privacy, or real-time claims.
 
-This artifact defines draft standard semantics for AxonOS implementations. It is not a clinical protocol, regulatory approval, or certification claim. It exists to make implementation claims explicit, reviewable, and testable.
+## 2. Canonical model
 
-AxonOS repositories should reference this artifact when their README, API, tests, or documentation make claims in this area.
+```text
+Neural hardware
+  ↓
+Acquisition / gateway
+  ↓
+AxonOS deterministic substrate
+  ↓
+Typed intent and neural-permission boundary
+  ↓
+Applications
+```
 
+The core rule is:
 
-## 3. Canonical boundary
+> Raw neural data must not cross into application space by default.
 
-The canonical model is: neural hardware → acquisition/gateway → AxonOS deterministic substrate → typed intent and neural-permission boundary → applications. Raw neural data must not cross into application space by default.
+## 3. Hardware boundary
 
-## 4. Hardware boundary
+Neural hardware includes electrodes, analog front-ends, ADCs, amplifiers,
+stimulation hardware, isolation components, secure elements, radios, and
+transport components.
 
-Neural hardware includes electrodes, analog front-ends, ADCs, amplifiers, stimulation hardware, isolation components, secure elements, radios, and transport.
+AxonOS does not standardize electrode geometry or clinical therapy. It
+standardizes the software boundary receiving neural-derived data and enforcing
+deterministic processing, permissioned access, consent state, and safety
+behavior.
 
-## 5. Gateway boundary
+## 4. Gateway boundary
 
-A gateway may integrate external tools and provide hardware-in-the-loop acquisition. A gateway is not automatically a safety-critical substrate.
+A gateway may integrate external tools and provide hardware-in-the-loop
+acquisition. A gateway is not automatically a safety-critical substrate.
 
-## 6. Deterministic substrate boundary
+A gateway repository must state whether it is an integration fork, reference
+gateway, test harness, research prototype, or production component.
 
-The deterministic substrate owns real-time scheduling, monotonic time, bounded IPC, safety-state handling, and capability enforcement.
+## 5. Deterministic substrate
+
+The deterministic substrate owns real-time scheduling, monotonic time, bounded
+IPC, safety-state handling, and capability enforcement.
+
+Application code must not be responsible for hard real-time enforcement of the
+neural signal path. If application behavior can introduce unbounded delay into
+the critical path, the system is not a conforming safety-critical substrate.
+
+## 6. Typed intent boundary
+
+The typed intent boundary separates raw neural data from application-observable
+events.
+
+Applications should receive typed events such as navigation intent, workload
+advisory, session quality, artifact event, consent state change, or safety
+interlock state.
 
 ## 7. Application boundary
 
-Applications may receive authorized typed events but must not override withdrawal, safety suspension, capability checks, or kernel timing policy.
+Applications may request permissions, receive authorized typed events, display
+consent state, and respond to safety transitions.
 
-## 8. Draft requirements
+Applications must not override withdrawal, safety suspension, capability checks,
+or kernel timing policy.
 
-A draft implementation aligned with this artifact should satisfy:
+## 8. Consent and safety boundary
 
-1. Identify the system role of each repository.
-2. Prevent raw neural data from entering application space by default.
-3. Define where consent is enforced.
-4. Define where permission checks occur.
-5. State failure behavior for ambiguous boundary states.
-6. Do not call an integration gateway a kernel unless it implements substrate requirements.
+Consent enforcement belongs below application policy. A UI can present consent,
+but withdrawal and expiry must affect event delivery through system state.
 
-## 9. Minimum verification expectations
+Safety behavior must be explicit. Deadline miss, buffer overrun, gateway
+disconnect, invalid input, and application crash must have documented behavior.
 
-1. Repository README declares boundary role.
-2. Gateway docs state integration status unless otherwise evidenced.
-3. Application-facing APIs expose typed events rather than raw streams by default.
-4. Safety-relevant failures are documented.
-5. Boundary claims are mapped to evidence levels.
+## 9. Requirements
+
+A draft-aligned implementation should identify its system role, prevent raw
+neural data from entering application space by default, define where consent is
+enforced, define where permissions are checked, and document fail-closed
+behavior.
 
 ## 10. Non-conformance examples
 
-The following are examples of non-conforming or misleading use:
+A GUI that streams raw EEG to plugins, an application that treats withdrawal as
+a UI-only flag, a gateway that claims kernel safety without scheduling evidence,
+and an SDK that grants all event classes by default are not aligned with this
+artifact.
 
-1. A GUI directly streams raw EEG to plugins without permissions.
-2. An application treats withdrawal as a UI-only flag.
-3. A gateway claims kernel safety without schedulability evidence.
-4. An SDK grants all event classes by default.
-5. Timing guarantees depend on arbitrary application behavior.
+## 11. Summary
 
-## 11. Open issues
-
-Draft 0.1 intentionally leaves some details unresolved. Future revisions may add machine-readable schemas, test vectors, stricter conformance profiles, and implementation-version mappings. Any promotion from draft text to normative text must be recorded through the governance process.
-
-## 12. Summary
-
-This artifact defines one part of the AxonOS Standard boundary. It should be read together with AOS-0000 through AOS-0011 and the repository-level `CONFORMANCE.md`, `VALIDATION.md`, and `GOVERNANCE.md` documents.
+The boundary model is the foundation for neural permissions, consent semantics,
+conformance profiles, and claims discipline.
