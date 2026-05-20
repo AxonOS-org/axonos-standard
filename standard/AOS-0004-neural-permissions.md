@@ -1,267 +1,77 @@
 # AOS-0004 — Neural Permissions
 
 Status: Draft 0.1 — pre-normative.  
-Audience: implementers, SDK authors, kernel authors, application developers, safety assessors, and privacy reviewers.  
+Audience: implementers, reviewers, safety assessors, researchers, and institutional partners.  
 Normative force: draft language only until AxonOS Standard v1.0.
 
 ## 1. Purpose
 
-This artifact defines the AxonOS neural-permission model.
+AOS-0004 defines the AxonOS neural-permission model. It operationalizes the rule that neural data is not application data.
 
-The central rule is:
+## 2. Scope
 
-> Neural data is not application data.
+This artifact defines draft standard semantics for AxonOS implementations. It is not a clinical protocol, regulatory approval, or certification claim. It exists to make implementation claims explicit, reviewable, and testable.
 
-A BCI application must not receive arbitrary neural signal data merely because it is installed, authenticated, paired with a device, or running inside a trusted user interface. Access to neural-derived information must be mediated by explicit permissions, typed event boundaries, consent state, and implementation-level enforcement.
+AxonOS repositories should reference this artifact when their README, API, tests, or documentation make claims in this area.
 
-The goal is not to make neural data unusable. The goal is to make the permitted data class precise, auditable, and revocable.
 
-## 2. Threat model
+## 3. Threat model
 
-The neural-permission model assumes that applications may be:
+Applications may be honest but over-broad, buggy, compromised, economically incentivized to over-collect, or capable of correlating event streams with external identifiers.
 
-- honest but over-broad in requested access;
-- buggy;
-- compromised;
-- economically incentivized to collect more data than required;
-- capable of correlating neural-derived data with external identifiers;
-- capable of exporting application-observable events;
-- capable of misrepresenting permission scope in the user interface.
+## 4. Permission object
 
-The model does not assume that application code is trusted.
+A neural permission is typed authority over an event class. It identifies event type, scope, max rate, payload class, consent dependency, revocation behavior, and evidence.
 
-The model also assumes that raw or high-resolution neural data may encode sensitive information beyond the immediate user intent. That information may include identity-correlated features, affective correlates, workload, fatigue, artifacts, health-related signals, or behavioral patterns not required for the stated application purpose.
+## 5. Default denial
 
-## 3. Permission object
+Default denial states that raw neural data is denied by default. Unknown event classes are denied. Withdrawn consent disables dependent permissions.
 
-A neural permission is a typed authority to receive a class of neural-derived event.
+## 6. Typed events
 
-A permission should include at least:
+Applications should consume typed events such as NavigationIntent, WorkloadAdvisory, SessionQuality, ArtifactEvent, ConsentStateChanged, and SafetyInterlockState.
 
-| Field | Meaning |
-|---|---|
-| `permission_id` | Stable identifier for the permission |
-| `event_type` | Event class authorized by the permission |
-| `scope` | Session, device, task, or application scope |
-| `max_rate_hz` | Maximum delivery rate, if applicable |
-| `payload_class` | Kind of data exposed |
-| `consent_required` | Whether active consent is required |
-| `revocation_behavior` | What happens when permission is revoked |
-| `evidence_level` | Evidence level of enforcement claim |
+## 7. Capability gate
 
-A permission is not a text label. It is an enforceable authority.
+The gate checks permission, scope, session, consent, safety state, event rate, event class, and version compatibility.
 
-## 4. Default denial
+## 8. Prohibited default classes
 
-A conforming implementation must deny access to raw neural data by default.
+Prohibited default classes include raw streams, continuous emotion inference, cognitive profile extraction, re-identification features, unbounded replay, and hidden high-rate diagnostics.
 
-Default denial means:
+## 9. Draft requirements
 
-- applications do not receive raw EEG or equivalent raw streams unless explicitly authorized by a standard-defined mechanism;
-- absence of a permission is denial;
-- unknown event classes are denied;
-- expired permissions are denied;
-- permissions outside scope are denied;
-- withdrawn consent disables dependent permissions;
-- safety suspension disables dependent permissions.
+A draft implementation aligned with this artifact should satisfy:
 
-Default denial must occur below the application user interface.
+1. Deny raw neural data by default.
+2. Represent permissions explicitly.
+3. Document typed event classes.
+4. Represent consent dependency explicitly.
+5. Fail closed on unknown event classes.
+6. Separate observe, store, transmit, aggregate, and model-training semantics when claimed.
 
-## 5. Typed event classes
+## 10. Minimum verification expectations
 
-AxonOS applications should receive typed event classes instead of raw neural streams.
+1. Manifest tests deny unknown event classes.
+2. Permission checks deny expired and out-of-scope permissions.
+3. Consent withdrawal disables dependent permissions.
+4. Rate bounds are documented and tested.
+5. Audit log can identify delivery authority.
 
-Draft event classes may include:
+## 11. Non-conformance examples
 
-| Event class | Description | Raw data exposure |
-|---|---|---|
-| `NavigationIntent` | Discrete navigation or motor-intent symbol | No |
-| `WorkloadAdvisory` | Low-resolution workload state | No |
-| `SessionQuality` | Signal/session quality state | No |
-| `ArtifactEvent` | Eye, muscle, motion, electrode artifact class | No |
-| `ConsentStateChanged` | Consent state transition notification | No |
-| `SafetyInterlockState` | Hardware or software safety gate state | No |
+The following are examples of non-conforming or misleading use:
 
-An implementation must document every event class it exposes.
+1. A wildcard `neural:*` permission for ordinary applications.
+2. Raw EEG delivery to all installed apps.
+3. Continuous emotion inference hidden as analytics.
+4. Permission checks only in UI code.
+5. Consent withdrawal that does not disable event delivery.
 
-## 6. Prohibited default classes
+## 12. Open issues
 
-The following classes must not be available by default:
+Draft 0.1 intentionally leaves some details unresolved. Future revisions may add machine-readable schemas, test vectors, stricter conformance profiles, and implementation-version mappings. Any promotion from draft text to normative text must be recorded through the governance process.
 
-- raw neural signal streams;
-- continuous emotion inference;
-- cognitive profile extraction;
-- re-identification features;
-- background mental-state telemetry;
-- unbounded session replay;
-- hidden high-rate diagnostic streams;
-- arbitrary classifier embeddings;
-- raw feature vectors sufficient to reconstruct sensitive state.
+## 13. Summary
 
-A future AxonOS version may define exceptional research profiles for some classes, but such profiles must be explicit, consent-gated, evidence-tagged, and not the default application profile.
-
-## 7. Manifest model
-
-Applications should declare requested permissions in a manifest.
-
-A manifest should state:
-
-- application identity;
-- requested event classes;
-- requested rate limits;
-- purpose string;
-- consent dependency;
-- storage behavior;
-- egress behavior;
-- retention behavior;
-- version of the AxonOS Standard used.
-
-A manifest is invalid if it requests unknown event classes or attempts to collapse distinct permissions into a generic all-access permission.
-
-## 8. Capability gate
-
-A capability gate is the enforcement point where event delivery is allowed or denied.
-
-The gate should evaluate:
-
-1. Does the application hold the permission?
-2. Is the permission within scope?
-3. Is the session active?
-4. Is consent granted?
-5. Is safety state compatible with delivery?
-6. Is the event rate within bounds?
-7. Is the event class permitted for this application profile?
-8. Is the implementation version compatible with the manifest version?
-
-If any check fails, delivery is denied.
-
-## 9. Permission and consent separation
-
-Permission and consent are distinct.
-
-Permission answers:
-
-> What class of neural-derived event may this application receive?
-
-Consent answers:
-
-> Is this session currently authorized to deliver consent-dependent events?
-
-An application may hold a permission while delivery is still denied because consent is suspended, withdrawn, expired, or faulted.
-
-## 10. Rate bounds
-
-Rate bounds are part of privacy.
-
-A low-resolution event delivered at 1 Hz has a different privacy profile from a high-rate event delivered at 250 Hz. An implementation should document maximum delivery rates for each event class.
-
-Rate limits should be enforced below the application layer when the claim is security- or privacy-relevant.
-
-## 11. Raw data exceptions
-
-Draft 0.1 does not define a general-purpose raw neural data permission for ordinary applications.
-
-If an implementation exposes raw neural data for research, debugging, or hardware validation, it must label that access as one of:
-
-- research-only;
-- diagnostic-only;
-- developer-only;
-- hardware-validation-only;
-- non-conformant experimental access.
-
-Such access must not be presented as ordinary AxonOS application behavior.
-
-## 12. Storage and egress
-
-A permission to receive an event is not automatically a permission to store, export, transmit, or sell it.
-
-Future versions of the standard should distinguish:
-
-- observe permission;
-- store permission;
-- transmit permission;
-- aggregate permission;
-- train-model permission;
-- third-party-share permission.
-
-Until those distinctions are normative, implementations must not imply that event delivery alone authorizes unrestricted downstream use.
-
-## 13. Auditability
-
-Permission decisions should be auditable.
-
-An implementation should be able to answer:
-
-- which application received which event class;
-- under which permission;
-- under which consent state;
-- at what rate;
-- during which session;
-- through which enforcement point;
-- under which standard version.
-
-The audit log itself may contain sensitive metadata and must be protected.
-
-## 14. Failure behavior
-
-If permission state is corrupted, missing, ambiguous, stale, incompatible with the current standard version, or inconsistent with consent state, the system should fail closed.
-
-Fail-closed means denial of event delivery, not best-effort delivery.
-
-## 15. Conformance requirements
-
-A draft AxonOS neural-permission implementation should satisfy:
-
-1. raw neural data denied by default;
-2. typed event classes documented;
-3. permissions represented explicitly;
-4. consent dependency represented explicitly;
-5. unknown event classes denied;
-6. rate limits documented where relevant;
-7. prohibited default classes absent;
-8. failure behavior is fail-closed;
-9. permission decisions auditable;
-10. storage and egress scope not implied by observation permission alone.
-
-## 16. Non-conformance examples
-
-The following are not conformant with this artifact:
-
-- a wildcard `neural:*` permission for ordinary applications;
-- raw EEG delivery to all installed apps;
-- continuous emotion inference hidden under a generic analytics event;
-- permission checks only in UI code;
-- consent withdrawal that does not disable event delivery;
-- rate limits documented but not enforced;
-- application-controlled safety override;
-- undocumented debug stream with high-rate neural features.
-
-## 17. Relationship to implementations
-
-This artifact informs:
-
-- `axonos-sdk` manifest design;
-- `axonos-kernel` capability-gate behavior;
-- `axonos-consent` consent dependency behavior;
-- `axon-bci-gateway` gateway scope limits;
-- future conformance tests.
-
-## 18. Open issues
-
-Draft 0.1 leaves the following unresolved:
-
-- canonical permission descriptor wire format;
-- final event type registry;
-- machine-readable manifest schema;
-- conformance test suite;
-- storage and egress permission profiles;
-- formal privacy leakage bounds per event class;
-- registry for prohibited and research-only classes.
-
-## 19. Summary
-
-Neural permissions are the AxonOS answer to a simple systems problem:
-
-> Applications should receive the neural-derived information they are authorized to use, and nothing else by default.
-
-This principle is foundational for AxonOS privacy, consent, and safety.
+This artifact defines one part of the AxonOS Standard boundary. It should be read together with AOS-0000 through AOS-0011 and the repository-level `CONFORMANCE.md`, `VALIDATION.md`, and `GOVERNANCE.md` documents.

@@ -4,14 +4,13 @@
 
 ### Added
 
-- Draft status marker.
-- Root documentation license.
-- Conformance profile draft.
-- Standard remediation plan.
-- Research preprints directory.
-- AxonOS analytical microkernel preprint as non-normative artifact.
-- Expanded claims register structure.
+- Chronological AOS artifact sequence AOS-0000 through AOS-0011.
+- `tools/verify_standard_artifacts.py`.
+- `tools/verify_standard_contract.py`.
+- `tools/verify_normative_chapters.py`.
+- CI jobs for standard contract, standard artifacts, and normative chapters.
 
-### Changed
+### Fixed
 
-- Repository positioned as pre-normative Draft 0.1 rather than final standard.
+- Missing verifier referenced by CI.
+- Non-chronological or incomplete AOS artifact layout.

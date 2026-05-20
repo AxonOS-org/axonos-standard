@@ -1,27 +1,25 @@
 # Roadmap
 
-## Phase 1 — Standard foundation
+## Phase 1 — Draft Standard Pack
 
-- Publish canonical terminology.
-- Publish architecture manual.
-- Publish validation evidence levels.
-- Align repository README files with the standard.
-- Define claims register format.
+- Establish AOS-0000 through AOS-0011.
+- Repair CI and artifact verification.
+- Replace placeholder standard text with substantive chapters.
 
-## Phase 2 — Reference implementation alignment
+## Phase 2 — Implementation Alignment
 
-- Align kernel, SDK, RFC, consent, swarm, and gateway repositories.
-- Add standard links to all reference implementations.
-- Define stable consent and capability semantics.
+- Map repositories to AOS artifacts.
+- Pin implementation versions.
+- Add conformance test planning.
 
-## Phase 3 — Validation artifacts
+## Phase 3 — Validation Artifacts
 
-- Publish traceable benchmark methodology.
-- Publish hardware-in-the-loop validation requirements.
-- Define L3 external instrumentation requirements.
+- Expand claims register.
+- Add trace requirements.
+- Add hardware-in-the-loop evidence format.
 
-## Phase 4 — Institutional adoption
+## Phase 4 — External Review
 
-- Engage research institutions, hardware teams, safety reviewers, and policy stakeholders.
-- Maintain selective partnership process.
-- Preserve open technical governance.
+- Publish reviewer feedback.
+- Record accepted findings and remediation.
+- Prepare Draft 0.2.

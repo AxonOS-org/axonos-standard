@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import re
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+standard = ROOT / "standard"
+
+expected = [
+    "AOS-0000-charter-and-scope.md",
+    "AOS-0001-system-boundary.md",
+    "AOS-0002-terminology.md",
+    "AOS-0003-evidence-levels-and-claims.md",
+    "AOS-0004-neural-permissions.md",
+    "AOS-0005-consent-semantics.md",
+    "AOS-0006-conformance-profiles.md",
+    "AOS-0007-intent-event-model.md",
+    "AOS-0008-ipc-and-timing-contract.md",
+    "AOS-0009-security-and-privacy-threat-model.md",
+    "AOS-0010-reference-implementation-mapping.md",
+    "AOS-0011-governance-and-change-control.md",
+]
+
+for fname in expected:
+    p = standard / fname
+    if not p.is_file():
+        print(f"ERROR: missing standard/{fname}", file=sys.stderr)
+        sys.exit(1)
+    text = p.read_text(encoding="utf-8", errors="replace")
+    if "Status: Draft 0.1" not in text:
+        print(f"ERROR: {fname} missing Draft 0.1 status", file=sys.stderr)
+        sys.exit(1)
+    if len(text) < 2500:
+        print(f"ERROR: {fname} too short for canonical artifact ({len(text)} bytes)", file=sys.stderr)
+        sys.exit(1)
+
+actual_nums = []
+for p in sorted(standard.glob("AOS-*.md")):
+    m = re.match(r"AOS-(\d{4})-", p.name)
+    if m:
+        actual_nums.append(int(m.group(1)))
+
+if actual_nums != list(range(12)):
+    print(f"ERROR: AOS numbering is not chronological 0000..0011: {actual_nums}", file=sys.stderr)
+    sys.exit(1)
+
+index = (standard / "README.md").read_text(encoding="utf-8", errors="replace")
+for n in range(12):
+    token = f"AOS-{n:04d}"
+    if token not in index:
+        print(f"ERROR: standard/README.md missing {token}", file=sys.stderr)
+        sys.exit(1)
+
+print("AxonOS Standard artifacts: PASS")

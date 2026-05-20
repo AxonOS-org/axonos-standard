@@ -1,29 +1,8 @@
 # Glossary
 
-## AxonOS
+Canonical terminology is defined in `standard/AOS-0002-terminology.md`.
 
-The deterministic operating layer for brain-computer interface software.
-
-## Neural permission
-
-A typed capability that grants access to a specific class of neural-derived event or intent without granting access to raw neural data.
-
-## Intent event
-
-A typed, bounded event derived from neural signal processing and exposed across the application boundary.
-
-## Consent state machine
-
-A deterministic model of consent grant, withdrawal, suspension, expiry, and fault transitions.
-
-## Evidence level
-
-A label describing how strongly a claim is supported.
-
-## Reference implementation
-
-A public implementation of part of the AxonOS standard. Reference implementation does not imply certification.
-
-## Hardware-gated consent
-
-Consent enforcement that can drive a hardware interlock or safety state below the application layer.
+Important terms include AxonOS, AxonOS Standard, neural data, raw neural data,
+typed intent event, neural permission, capability gate, consent state machine,
+hardware-gated consent, WCET, WCRT, evidence level, reference implementation,
+and conformance profile.
