@@ -5,5 +5,5 @@ This directory is not a separate standard.
 Canonical interpretation is maintained through `legal/disambiguation.md`, `legal/attribution.md`, and `LICENSE`.
 
 If any file in this directory appears to conflict with an AOS artifact, the
-AOS artifact is the active Draft 0.1 source until the governance process
+AOS artifact is the active Draft 0.1.1 source until the governance process
 says otherwise.

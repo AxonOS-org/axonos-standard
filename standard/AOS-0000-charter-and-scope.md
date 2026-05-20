@@ -1,6 +1,6 @@
 # AOS-0000 — Charter and Scope
 
-Status: Draft 0.1 — pre-normative.  
+Status: Draft 0.1.1 — pre-normative.  
 Audience: implementers, reviewers, safety assessors, researchers, and institutional partners.  
 Normative force: draft language only until AxonOS Standard v1.0.
 
@@ -18,58 +18,26 @@ sensitive, and consent must be enforced below the user interface.
 The mission is to establish a technical foundation for safe, private,
 real-time BCI software.
 
-This foundation is expressed through:
-
-- deterministic timing boundaries;
-- neural permissions;
-- consent state semantics;
-- typed intent events;
-- conformance profiles;
-- evidence-tagged validation;
-- security and privacy threat modelling;
-- governance and change control.
+This foundation is expressed through deterministic timing boundaries, neural
+permissions, consent state semantics, typed intent events, conformance profiles,
+evidence-tagged validation, security and privacy threat modelling, and governance
+and change control.
 
 ## 3. Explicit exclusions
 
-AxonOS does not define:
-
-- a clinical treatment protocol;
-- a medical-device approval;
-- a regulatory certification claim;
-- a token or DAO;
-- a wellness application;
-- a general-purpose AI-agent framework;
-- a proprietary therapeutic waveform.
-
-Repositories may contain research or reference implementations, but research
-artifacts are non-normative until adopted through governance.
+AxonOS does not define a clinical treatment protocol, medical-device approval,
+regulatory certification claim, token, DAO, wellness application, general-purpose
+AI-agent framework, or proprietary therapeutic waveform.
 
 ## 4. Maturity
 
-Draft 0.1 is pre-normative. It may be used for architecture alignment and review,
-but it must not be cited as a final conformance standard.
-
-Final conformance requires:
-
-- stable artifact version;
-- release tag;
-- conformance test suite;
-- implementation mapping;
-- evidence register;
-- governance approval.
+Draft 0.1.1 is pre-normative. It may be used for architecture alignment and
+review, but it must not be cited as a final conformance standard.
 
 ## 5. Repository classes
 
-AxonOS repositories should identify themselves as one or more of:
-
-| Class | Meaning |
-|---|---|
-| Normative | defines standard text |
-| Reference | implements part of the standard |
-| Experimental | explores future behavior |
-| Integration | bridges external hardware or tools |
-| Research | provides evidence context |
-| Historical | preserved for audit or compatibility |
+AxonOS repositories should identify themselves as normative, reference,
+experimental, integration, research, or historical.
 
 ## 6. Requirements
 
@@ -78,7 +46,7 @@ known non-claims, and relationship to `axonos-standard`.
 
 ## 7. Non-conformance examples
 
-It is misleading to claim final standard status while Draft 0.1 is active, to
+It is misleading to claim final standard status while Draft 0.1.1 is active, to
 use AxonOS to imply affiliation with unrelated projects, to present a research
 article as a normative specification, or to claim clinical readiness without
 clinical evidence.

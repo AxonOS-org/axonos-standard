@@ -3,8 +3,8 @@
 ## Phase 1 — Draft Standard Pack
 
 - Establish AOS-0000 through AOS-0011.
-- Repair CI and artifact verification.
-- Replace placeholder text with substantive draft chapters.
+- Keep CI green and artifact verification strict.
+- Replace collapsed or overlinked Markdown with readable standard text.
 
 ## Phase 2 — Implementation Alignment
 

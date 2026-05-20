@@ -1,6 +1,6 @@
 # AOS-0005 — Consent Semantics
 
-Status: Draft 0.1 — pre-normative.  
+Status: Draft 0.1.1 — pre-normative.  
 Audience: consent-layer authors, SDK authors, kernel authors, safety assessors, and institutional reviewers.  
 Normative force: draft language only until AxonOS Standard v1.0.
 
@@ -13,10 +13,7 @@ display. Consent is runtime state enforced below the application layer.
 
 ## 2. Core rule
 
-> Consent withdrawal must be enforceable below the application layer.
-
-A UI may request consent, display state, and explain scope. It must not be the
-sole authority enforcing consent.
+Consent withdrawal must be enforceable below the application layer.
 
 ## 3. Consent versus permission
 
@@ -29,54 +26,26 @@ Safety state answers whether delivery or actuation is currently allowed.
 Draft states include NoConsent, Granted, Suspended, Withdrawn, Expired, and
 Faulted. Implementations may add states but must not weaken these semantics.
 
-## 5. Required events
-
-A consent implementation should support grant, withdraw, suspend, resume, expire,
-fault, and reset-session events.
-
-## 6. Terminal withdrawal
+## 5. Terminal withdrawal
 
 Withdrawal is terminal for the current session. The system must not silently
 return to Granted after withdrawal. A new session or explicit re-grant is
 required.
 
-## 7. Suspension and expiry
-
-Suspension is temporary denial. Expiry is end of session authorization. Both deny
-delivery while active.
-
-## 8. Fault behavior
-
-Faulted state represents invalid transitions, corrupted records, replay attempts,
-conflicting state, interlock mismatch, authentication failure, or monotonic
-counter violation. Fault behavior should fail closed.
-
-## 9. Hardware-gated consent
+## 6. Hardware-gated consent
 
 Hardware gating may connect consent state to stimulation enable lines, safety
 relays, actuator interlocks, watchdog safe idle, secure-world state, or
 equivalent controls. Status must be labelled implemented, simulated, stubbed,
 pending, or not applicable.
 
-## 10. Auditability
-
-A transition record should include previous state, event, next state, timestamp
-or counter, session id, scope, actor or authority, reason code, and standard
-version.
-
-## 11. Requirements
+## 7. Requirements
 
 Draft alignment requires an explicit state machine, terminal withdrawal,
 suspension and expiry denial semantics, fail-closed fault behavior, permission
 integration, no application override, auditability, and tests for invalid
 escalation.
 
-## 12. Non-conformance examples
-
-Consent stored only as a UI checkbox, automatic re-grant after withdrawal,
-expired session continuing event delivery, hidden background session after UI
-close, or hardware-gating claims with only UI-side logic are not aligned.
-
-## 13. Summary
+## 8. Summary
 
 Consent in AxonOS is a system state, not a UI artifact.

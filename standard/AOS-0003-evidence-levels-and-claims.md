@@ -1,6 +1,6 @@
 # AOS-0003 — Evidence Levels and Claims
 
-Status: Draft 0.1 — pre-normative.  
+Status: Draft 0.1.1 — pre-normative.  
 Audience: implementers, reviewers, safety assessors, researchers, and institutional partners.  
 Normative force: draft language only until AxonOS Standard v1.0.
 
@@ -24,17 +24,8 @@ external instrumentation, independent review, and regulatory approval.
 
 ## 3. Claim record
 
-A technical claim should state:
-
-- value;
-- evidence level;
-- artifact;
-- version or commit;
-- limitations;
-- falsification threshold.
-
-Claims without artifacts should not appear in repository descriptions or top-level
-README files.
+A technical claim should state value, evidence level, artifact, version or
+commit, limitations, and falsification threshold.
 
 ## 4. Research artifacts
 
@@ -46,23 +37,6 @@ They do not automatically become normative standard text.
 The claims register is the canonical place for standard-level claims. It must not
 contain only meta-claims about repository existence.
 
-## 6. Timing and security claims
-
-Timing claims require deadline, bound, hardware context, method, and evidence
-level. Security claims require protected asset, attacker model, trust boundary,
-and enforcement point.
-
-## 7. Requirements
-
-Every public technical claim should carry an evidence level. Clinical and
-regulatory claims require L5 evidence.
-
-## 8. Non-conformance examples
-
-Calling a preprint a standard, claiming L3 timing from non-instrumented tests,
-claiming certification without evidence, or equating CI passing with safety
-certification is not aligned with this artifact.
-
-## 9. Summary
+## 6. Summary
 
 Evidence levels protect the project from claim inflation.

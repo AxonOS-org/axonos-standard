@@ -2,7 +2,7 @@
 
 **Draft technical standard for deterministic brain-computer interface software.**
 
-Status: **Draft 0.1 — pre-normative**.
+Status: **Draft 0.1.1 — pre-normative**.
 
 AxonOS defines the operating layer between neural hardware and intelligent
 applications: deterministic timing, neural permissions, consent enforcement,
@@ -14,9 +14,7 @@ project, and not an AI-agent framework.
 
 ## What this repository contains
 
-The normative draft sequence is maintained in `standard/`.
-
-Current Draft 0.1 artifacts:
+The draft standard sequence is maintained in `standard/`.
 
 ```text
 AOS-0000  Charter and Scope
@@ -45,7 +43,7 @@ AOS-0011  Governance and Change Control
 
 ## Current maturity
 
-Draft 0.1 is suitable for:
+Draft 0.1.1 is suitable for:
 
 - architecture review;
 - implementation alignment;
@@ -53,7 +51,7 @@ Draft 0.1 is suitable for:
 - early conformance planning;
 - due-diligence orientation.
 
-Draft 0.1 is not:
+Draft 0.1.1 is not:
 
 - a certified medical-device standard;
 - a clinical protocol;
@@ -72,12 +70,11 @@ research/       non-normative research context
 
 Legacy navigation directories are retained only as redirects to `standard/`.
 
-## Reference implementation families
+## Release discipline
 
-AxonOS reference implementation work is split across kernel, SDK, RFC, consent,
-swarm, and gateway repositories. This repository defines the vocabulary and
-draft conformance expectations they should align with. Implementation maturity
-is determined by evidence level, not by repository naming.
+Version `0.1.1-draft` is a hygiene release. It focuses on green CI, license
+clarity, release notes, chronological AOS verification, claims-register hygiene,
+and removal of excessive link noise from the top-level README.
 
 ## Contact
 
