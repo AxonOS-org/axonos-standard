@@ -28,6 +28,11 @@ for path in required:
         print(f"ERROR: missing {path}", file=sys.stderr)
         sys.exit(1)
 
+license_text = (ROOT / "LICENSE").read_text(encoding="utf-8", errors="replace")
+if "MIT License" not in license_text or "Permission is hereby granted" not in license_text:
+    print("ERROR: LICENSE is not a full MIT license text", file=sys.stderr)
+    sys.exit(1)
+
 status = (ROOT / "STATUS.md").read_text(encoding="utf-8", errors="replace")
 if "Draft 0.1" not in status:
     print("ERROR: STATUS.md must mark Draft 0.1", file=sys.stderr)

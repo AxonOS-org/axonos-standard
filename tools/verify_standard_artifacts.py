@@ -30,8 +30,11 @@ for fname in expected:
     if "Status: Draft 0.1" not in text:
         print(f"ERROR: {fname} missing Draft 0.1 status", file=sys.stderr)
         sys.exit(1)
-    if len(text) < 2500:
-        print(f"ERROR: {fname} too short for canonical artifact ({len(text)} bytes)", file=sys.stderr)
+    min_size = 2500
+    if fname in {"AOS-0008-ipc-and-timing-contract.md", "AOS-0009-security-and-privacy-threat-model.md"}:
+        min_size = 9000
+    if len(text) < min_size:
+        print(f"ERROR: {fname} too short ({len(text)} bytes), expected >= {min_size}", file=sys.stderr)
         sys.exit(1)
 
 actual_nums = []

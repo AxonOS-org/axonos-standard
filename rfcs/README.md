@@ -1,7 +1,8 @@
-# RFC Index
+# RFC Directory
 
-The AxonOS RFC process records engineering decisions and proposed changes to the standard.
+The canonical RFC repository is:
 
-Current RFC repository:
+https://github.com/AxonOS-org/axonos-rfcs
 
-- https://github.com/AxonOS-org/axonos-rfcs
+Standard-impacting RFCs should link back to the AOS artifacts in `standard/`.
+This directory is a navigation stub, not a second RFC source of truth.
