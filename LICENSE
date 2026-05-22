@@ -1,21 +1,45 @@
-MIT License
+SPDX-License-Identifier: CC-BY-SA-4.0
 
-Copyright (c) 2026 Denis Yermakou / AxonOS
+The AxonOS Standard, Version 1.0.0
+Copyright (c) 2026 The AxonOS Project
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This work — the normative text of the AxonOS Standard and its companion
+documents — is licensed under the Creative Commons Attribution-ShareAlike
+4.0 International License (CC BY-SA 4.0).
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+You are free to:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+  Share — copy and redistribute the material in any medium or format.
+  Adapt — remix, transform, and build upon the material for any purpose,
+  even commercially.
+
+Under the following terms:
+
+  Attribution — You must give appropriate credit, provide a link to the
+  license, and indicate if changes were made. You may do so in any
+  reasonable manner, but not in any way that suggests the licensor
+  endorses you or your use.
+
+  ShareAlike — If you remix, transform, or build upon the material, you
+  must distribute your contributions under the same license as the
+  original.
+
+  No additional restrictions — You may not apply legal terms or
+  technological measures that legally restrict others from doing anything
+  the license permits.
+
+The full text of the Creative Commons Attribution-ShareAlike 4.0
+International License is available at:
+
+  https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+Code samples embedded within the documents of this repository are
+additionally made available, at the option of the user, under the
+Apache License 2.0 or the MIT License, so that they may be incorporated
+into reference implementations without license-compatibility concerns.
+
+The AxonOS name and associated marks are not licensed under CC BY-SA 4.0;
+their use is governed separately. A derivative or fork of this Standard
+may be created under the terms of CC BY-SA 4.0 but may not represent
+itself as the AxonOS Standard or use the AxonOS name in a manner implying
+endorsement by or identity with the AxonOS Project.
