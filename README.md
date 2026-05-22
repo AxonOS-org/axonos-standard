@@ -81,3 +81,13 @@ and removal of excessive link noise from the top-level README.
 General / institutional: connect@axonos.org  
 Security: security@axonos.org  
 Website: https://axonos.org
+
+---
+
+## AxonOS Concept Video
+
+Watch the AxonOS BCI concept visualization:
+
+[AxonOS Concept.mp4](docs/media/AxonOS%20Concept.mp4)
+
+This video is a simulated concept demonstration. It is not a clinical, medical-device, or regulatory claim.
