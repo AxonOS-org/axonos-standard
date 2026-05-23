@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: "The AxonOS Standard"
+message: >-
+  If you reference or build against the AxonOS Standard,
+  please cite it using the metadata below.
+type: software
+authors:
+  - given-names: Denis
+    family-names: Yermakou
+    affiliation: "AxonOS Project"
+repository-code: "https://github.com/AxonOS-org/axonos-standard"
+url: "https://axonos.org"
+abstract: >-
+  The AxonOS Standard is the open technical standard for deterministic
+  brain-computer interface software. It defines the architecture, the
+  real-time guarantees, the capability system, the consent semantics,
+  the application binary interface, the validation methodology, and the
+  conformance requirements that a software implementation must satisfy
+  to declare itself a conformant brain-computer-interface software
+  substrate.
+keywords:
+  - brain-computer interface
+  - real-time systems
+  - operating system
+  - technical standard
+  - neural privacy
+  - consent enforcement
+  - conformance
+license: CC-BY-SA-4.0
+version: "1.0.0"
+date-released: "2026-05-21"
