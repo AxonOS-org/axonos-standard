@@ -6,6 +6,25 @@ For the first canonical release, version 1.0.0, this document additionally serve
 
 ---
 
+## Unreleased — informative additions
+
+These changes are **informative only**: they add no normative requirement and
+change no conformance criterion, and so they are recorded here without a
+version increment, per the versioning discipline of `STANDARD.md` Section 26,
+which reserves version increments for changes to the normative text. They will
+be folded into the next versioned release record.
+
+- Added `ROADMAP.md`, an informative statement of the intended path forward —
+  the evidence progression toward a first L3 claim, the governance transition,
+  and the adoption milestones — written in the discipline of `VALIDATION.md`
+  and committing to no dates.
+- Added, in `README.md`, a "The reference implementation" section that links
+  the seven reference repositories described normatively in `STANDARD.md`
+  Section 31, so that a reader arriving at the Standard has a navigable path to
+  the software that demonstrates it.
+
+---
+
 ## Version 1.0.0 — 2026-05-21
 
 The first canonical release of the AxonOS Standard: the complete normative Standard and its companion documents, establishing the open technical standard for deterministic brain-computer-interface software.

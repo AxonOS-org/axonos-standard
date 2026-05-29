@@ -30,7 +30,32 @@ The Standard is not a single file but a small, deliberately organised set of doc
 
 The **`architecture/`** directory contains the architecture chapters. These are informative throughout — they impose no requirement — but they are substantial and genuinely useful: they elaborate the design and the reasoning of each major subsystem at a depth the normative Standard, which must be concise about requirements, cannot reach. The directory contains four chapters: `kernel.md`, on the real-time microkernel; `scheduling.md`, on the scheduling discipline and the worst-case-timing analysis; `capability-system.md`, on the capability system and neural permissions; and `consent.md`, on the consent subsystem.
 
-Alongside these are the structural files of any well-formed repository: this `README.md`; the `LICENSE`; the `VERSION` file recording the current version; and the `CHANGELOG.md` recording the Standard's release history.
+Alongside these are the structural files of any well-formed repository: this `README.md`; the `LICENSE`; the `VERSION` file recording the current version; the `CHANGELOG.md` recording the Standard's release history; `SECURITY.md`, the policy for reporting a specification-level security concern; and `ROADMAP.md`, an **informative** statement of the intended path forward for the Standard and its reference implementation. `CITATION.cff` records how to cite the Standard.
+
+## The reference implementation
+
+This repository is the Standard, not its implementation. A reference
+implementation exists — described normatively, without links, in
+`STANDARD.md` Section 31 — and is provided here, informatively, as a set of
+links, so that a reader arriving at the Standard has a path to the software
+that demonstrates it. The reference implementation is **one** conformant
+implementation among the many the Standard makes possible; it is no more
+authoritative than any independent implementation, and the Standard, not the
+reference implementation, defines conformance.
+
+| Repository | Role |
+|---|---|
+| [`axonos-standard`](https://github.com/AxonOS-org/axonos-standard) | The canonical Standard — this repository |
+| [`axonos-rfcs`](https://github.com/AxonOS-org/axonos-rfcs) | Engineering Request-for-Comments archive; the design record behind the Standard |
+| [`axonos-kernel`](https://github.com/AxonOS-org/axonos-kernel) | Reference real-time microkernel: scheduling, bounded IPC, monotonic time |
+| [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | Reference application boundary: typed intents, manifests, ABI |
+| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | Reference consent subsystem: the deterministic consent state machine |
+| [`axonos-swarm`](https://github.com/AxonOS-org/axonos-swarm) | Reference swarm-coordination layer for multi-node deployments |
+| [`axon-bci-gateway`](https://github.com/AxonOS-org/axon-bci-gateway) | Hardware-in-the-loop acquisition gateway (integration fork) |
+
+Each repository's code is licensed under Apache-2.0 OR MIT and its
+specification text under CC-BY-SA-4.0, the same dual arrangement as the
+Standard itself.
 
 ## How to read the Standard, by role
 
