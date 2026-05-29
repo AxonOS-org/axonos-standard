@@ -6,14 +6,24 @@ For the first canonical release, version 1.0.0, this document additionally serve
 
 ---
 
-## Unreleased — informative additions
+## Unreleased — companion-file additions
 
-These changes are **informative only**: they add no normative requirement and
-change no conformance criterion, and so they are recorded here without a
-version increment, per the versioning discipline of `STANDARD.md` Section 26,
-which reserves version increments for changes to the normative text. They will
-be folded into the next versioned release record.
+These changes add or populate **companion files** maintained alongside the
+normative text. None of them changes the normative text or any conformance
+criterion, so they are recorded here without a version increment, per the
+versioning discipline of `STANDARD.md` Section 26. They will be folded into the
+next versioned release record.
 
+- Added `CLAIMS.md`, the **claims catalogue** required by `VALIDATION.md`
+  Section 5, which at version 1.0.0 the repository defined but did not yet
+  contain. It records each principal quantitative claim with its value,
+  evidence level, artefact link, and falsifier; links the published L1 proofs
+  and the consent-withdrawal measurement procedure; and records honestly that
+  the reference-hardware soak traces underlying the L2 figures are not yet
+  published and that publishing them is the immediate validation task. As
+  `VALIDATION.md` Section 5.2 directs, the catalogue is maintained separately
+  from the normative text and its upkeep does not increment the Standard's
+  version.
 - Added `ROADMAP.md`, an informative statement of the intended path forward —
   the evidence progression toward a first L3 claim, the governance transition,
   and the adoption milestones — written in the discipline of `VALIDATION.md`
