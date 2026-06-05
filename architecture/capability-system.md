@@ -1,5 +1,7 @@
 # Architecture: The Capability System and Neural Permissions
 
+**AxonOS Standard v1.0.1** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+
 *An architecture chapter of the AxonOS Standard. Informative throughout. This chapter elaborates the capability system; the normative requirements are in `STANDARD.md` Sections 12 through 14. Where this chapter and the Standard differ, the Standard governs.*
 
 ---

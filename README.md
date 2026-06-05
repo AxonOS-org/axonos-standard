@@ -1,6 +1,8 @@
 # The AxonOS Standard
 
-**Version 1.0.0** — the canonical open technical standard for deterministic brain-computer interface software.
+**Version 1.0.1** — the canonical open technical standard for deterministic brain-computer interface software.
+
+**Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
 
 ---
 

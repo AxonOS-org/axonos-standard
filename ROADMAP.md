@@ -1,5 +1,7 @@
 # Roadmap — The AxonOS Standard
 
+**AxonOS Standard v1.0.1** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+
 *This document is **informative**. It imposes no requirement and defines no
 conformance criterion. It describes the AxonOS Project's intended path forward
 for the Standard and its reference implementation, so that an implementer, a

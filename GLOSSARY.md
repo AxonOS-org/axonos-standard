@@ -1,4 +1,4 @@
-# Glossary — The AxonOS Standard, Version 1.0.0
+# Glossary — The AxonOS Standard, Version 1.0.1
 
 **Status:** Normative for the meaning of every term it defines · **Companion to:** `STANDARD.md` · **License:** CC-BY-SA-4.0
 

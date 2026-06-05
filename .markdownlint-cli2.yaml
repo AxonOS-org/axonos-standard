@@ -1,0 +1,18 @@
+config:
+  default: true
+  MD013: false   # line length — normative prose has long sentences
+  MD033: false   # inline HTML
+  MD036: false   # emphasis as heading — house style for status/version lines
+  MD041: false
+  MD024: false   # repeated sub-headings across parts
+  MD026: false
+  MD012: false
+  MD022: false
+  MD031: false
+  MD032: false
+  MD040: false
+  MD034: false
+  MD029: false
+ignores:
+  - ".github/**"
+  - "LICENSE"

@@ -1,0 +1,6 @@
+[files]
+extend-exclude = ["LICENSE", "CITATION.cff"]
+[default]
+extend-ignore-identifiers-re = ["[A-Za-z0-9]+_[A-Za-z0-9_]+", "0x[0-9A-Fa-f]+"]
+[default.extend-words]
+AxonOS = "AxonOS"

@@ -1,18 +1,18 @@
 # Changelog and Release Record — The AxonOS Standard
 
+**AxonOS Standard v1.0.1** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+
 This document records the release history of the AxonOS Standard. Every release is recorded here, and every change in a release is traceable, through the governance process of `GOVERNANCE.md`, to the Request-for-Comments document that introduced it.
 
 For the first canonical release, version 1.0.0, this document additionally serves as a comprehensive release record: because version 1.0.0 introduces the entire Standard at once, with no prior version against which to record incremental change, the most useful thing this document can do is set out, completely, what version 1.0.0 establishes — what each document contains, what the load-bearing design decisions are, what the honest status of each forward-looking element is — so that a reader returning to this changelog in future, after subsequent releases have recorded their incremental changes against it, can see precisely what the foundation was.
 
 ---
 
-## Unreleased — companion-file additions
+## Version 1.0.1 — 2026-06-06
 
 These changes add or populate **companion files** maintained alongside the
 normative text. None of them changes the normative text or any conformance
-criterion, so they are recorded here without a version increment, per the
-versioning discipline of `STANDARD.md` Section 26. They will be folded into the
-next versioned release record.
+criterion, so, per the versioning discipline of `STANDARD.md` Section 26, version 1.0.1 is a **patch**: an editorial release that changes no normative requirement and no conformance criterion. It folds the companion-file additions below, together with the repository-infrastructure changes that accompany them.
 
 - Added `CLAIMS.md`, the **claims catalogue** required by `VALIDATION.md`
   Section 5, which at version 1.0.0 the repository defined but did not yet
@@ -32,6 +32,8 @@ next versioned release record.
   the seven reference repositories described normatively in `STANDARD.md`
   Section 31, so that a reader arriving at the Standard has a navigable path to
   the software that demonstrates it.
+- Added a continuous-integration workflow, `.github/workflows/ci.yml`, that checks repository structure, version consistency across the documents, editor and licence attribution, the section numbering and internal cross-references of `STANDARD.md`, internal link resolution, and `CITATION.cff` validity, alongside style and spelling checks — complementing the existing `integrity` workflow. A second tool, `tools/check_consistency.py`, implements the structural checks dependency-free.
+- Refreshed the document-version header of each normative document and the `VERSION` and `CITATION.cff` files to 1.0.1, and recorded the editor attribution in every document. No normative text was changed.
 
 ---
 

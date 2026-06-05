@@ -1,4 +1,4 @@
-# Validation — The AxonOS Standard, Version 1.0.0
+# Validation — The AxonOS Standard, Version 1.0.1
 
 **Status:** Normative · **Companion to:** `STANDARD.md` · **License:** CC-BY-SA-4.0
 

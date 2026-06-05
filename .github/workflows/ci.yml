@@ -1,0 +1,117 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+# Continuous integration for the AxonOS Standard. Each job is a distinct,
+# meaningful check on the integrity of the specification repository.
+# Complements the separate `integrity` workflow (placeholder-token guard).
+name: ci
+on:
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
+permissions: { contents: read }
+
+jobs:
+  structure:
+    name: Repository structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python tools/check_consistency.py structure
+
+  version:
+    name: Version consistency
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python tools/check_consistency.py version
+
+  attribution:
+    name: Editor attribution present
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python tools/check_consistency.py attribution
+
+  license:
+    name: Licence notices
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python tools/check_consistency.py license
+
+  sections:
+    name: STANDARD.md section numbering
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python tools/check_consistency.py sections
+
+  xref:
+    name: STANDARD.md cross-references
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python tools/check_consistency.py xref
+
+  links:
+    name: Internal link resolution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python tools/check_consistency.py links
+
+  placeholders:
+    name: No placeholder tokens
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python tools/check_integrity.py .
+
+  citation:
+    name: CITATION.cff validity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: |
+          pip install --quiet cffconvert
+          cffconvert --validate -i CITATION.cff
+
+  markdownlint:
+    name: Markdown style (advisory)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v16
+        with: { globs: "**/*.md" }
+
+  typos:
+    name: Spelling (advisory)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: crate-ci/typos@master
+
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    needs: [structure, version, attribution, license, sections, xref, links, placeholders, citation, markdownlint, typos]
+    steps:
+      - run: echo "All required AxonOS Standard checks passed."
