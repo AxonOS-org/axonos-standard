@@ -4,7 +4,7 @@ config:
   MD025: false   # multiple H1 — Part headings are intentionally top-level
   MD033: false   # inline HTML
   MD036: false   # emphasis as heading — house style for status/normative-marker lines
-  MD037: false   # spaces inside emphasis — false positives in normative prose
+  MD037: false   # spaces inside emphasis
   MD041: false
   MD024: false   # repeated sub-headings across parts
   MD026: false
@@ -15,6 +15,8 @@ config:
   MD040: false
   MD034: false
   MD029: false
+  MD059: false   # descriptive link text — cosmetic (markdownlint v0.38+)
+  MD060: false   # table column / pipe spacing — cosmetic (markdownlint v0.40+)
 ignores:
   - ".github/**"
   - "LICENSE"
