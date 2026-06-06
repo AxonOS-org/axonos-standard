@@ -1,6 +1,6 @@
 # Architecture: The Real-Time Microkernel
 
-**AxonOS Standard v1.0.1** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
 
 *An architecture chapter of the AxonOS Standard. Informative throughout. This chapter elaborates the design and implementation of the kernel; the normative requirements it must satisfy are in Part II of `STANDARD.md`. Where this chapter and the Standard differ, the Standard governs.*
 

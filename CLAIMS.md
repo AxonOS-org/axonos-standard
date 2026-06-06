@@ -1,6 +1,6 @@
 # Claims Catalogue — The AxonOS Standard
 
-**AxonOS Standard v1.0.1** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
 
 *This is the **claims catalogue** required by `VALIDATION.md` Section 5: the
 single, public, maintained document that lists every quantitative claim the

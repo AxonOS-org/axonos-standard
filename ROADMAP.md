@@ -1,6 +1,6 @@
 # Roadmap — The AxonOS Standard
 
-**AxonOS Standard v1.0.1** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
 
 *This document is **informative**. It imposes no requirement and defines no
 conformance criterion. It describes the AxonOS Project's intended path forward
@@ -38,7 +38,7 @@ and not when a calendar says so.
 
 ## The honest starting point
 
-At version 1.0.0, the Standard's status is exactly what `VALIDATION.md` records
+At version 1.1.0, the Standard's status is exactly what `VALIDATION.md` records
 and no more. The headline real-time claims of the reference implementation are
 held at **L1 and L2**: the worst-case response-time bound is proven over the
 admissible input space and corroborated by a soak measurement on reference

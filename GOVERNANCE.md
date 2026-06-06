@@ -1,4 +1,4 @@
-# Governance — The AxonOS Standard, Version 1.0.1
+# Governance — The AxonOS Standard, Version 1.1.0
 
 **Status:** Normative · **Companion to:** `STANDARD.md` · **License:** CC-BY-SA-4.0
 
@@ -44,7 +44,7 @@ A small set of the Standard's properties are *constitutional*: they may be chang
 
 ### 1.5 Authority is designed to transfer
 
-The Standard's governance is designed, from version 1.0.0, not to depend permanently on its founding maintainer. Section 6 defines a gated, three-phase path along which governing authority moves from the founding maintainer, through a technical steering committee, to a constituted Foundation. The path is defined now, at the beginning, precisely so that the transition is a planned and orderly execution of a pre-committed design rather than an improvised response to a future crisis.
+The Standard's governance is designed, from version 1.1.0, not to depend permanently on its founding maintainer. Section 6 defines a gated, three-phase path along which governing authority moves from the founding maintainer, through a technical steering committee, to a constituted Foundation. The path is defined now, at the beginning, precisely so that the transition is a planned and orderly execution of a pre-committed design rather than an improvised response to a future crisis.
 
 ---
 
@@ -200,13 +200,13 @@ The governance carries a standing presumption against breaking changes. A breaki
 
 The AxonOS Standard begins under the stewardship of its founding maintainer. This is the natural and correct beginning for a standard — a standard begins as one person's or a small team's coherent design, and a coherent design requires, at the start, a coherent designer with the authority to keep it coherent. But a standard that remained permanently dependent on its founding maintainer would be a fragile standard: fragile against the maintainer's departure, the maintainer's error, the maintainer's eventual incapacity, and fragile against the reasonable reluctance of serious implementers and institutions to build long-term work on a contract governed in perpetuity by a single individual.
 
-The governance therefore designs, at version 1.0.0, the path by which the founding stewardship becomes an institutional stewardship. The path is designed *now*, at the beginning, for a specific reason: a transition planned in advance, with its phases and its gates defined before any of them is reached, is an orderly execution of a pre-committed design, whereas a transition improvised later, under whatever pressure prompted it, is a crisis. The Project chooses the orderly path by committing to it before it is needed.
+The governance therefore designs, at version 1.1.0, the path by which the founding stewardship becomes an institutional stewardship. The path is designed *now*, at the beginning, for a specific reason: a transition planned in advance, with its phases and its gates defined before any of them is reached, is an orderly execution of a pre-committed design, whereas a transition improvised later, under whatever pressure prompted it, is a crisis. The Project chooses the orderly path by committing to it before it is needed.
 
 ### 6.2 The three phases
 
 The transition has three phases. Each phase is a configuration of governing authority; the movement from one phase to the next is gated by defined conditions.
 
-**Phase A — the founding maintainer.** In Phase A, the founding maintainer is the sole governing body. The maintainer decides RFCs, renders the decisions, and bears the stewardship. Phase A is where the Standard begins, at version 1.0.0. Phase A's limitation — the concentration of ordinary amendment authority in one person — is real and is managed, as Section 4.3 describes, by the public-and-reasoned-decision requirement and by the insulation of the constitutional commitments. Phase A is explicitly a beginning, not a destination.
+**Phase A — the founding maintainer.** In Phase A, the founding maintainer is the sole governing body. The maintainer decides RFCs, renders the decisions, and bears the stewardship. Phase A is where the Standard begins, at version 1.1.0. Phase A's limitation — the concentration of ordinary amendment authority in one person — is real and is managed, as Section 4.3 describes, by the public-and-reasoned-decision requirement and by the insulation of the constitutional commitments. Phase A is explicitly a beginning, not a destination.
 
 **Phase B — the technical steering committee.** In Phase B, governing authority rests with a technical steering committee: a small body of named individuals, including but not limited to the founding maintainer, who decide RFCs collectively. The committee decides by a defined procedure — a documented deliberation followed by a recorded vote — and its decisions, like all decisions, are public and reasoned. Phase B distributes the ordinary amendment authority that Phase A concentrated, so that no single person decides the Standard's ordinary evolution, while keeping the governing body small enough to remain coherent and decisive.
 
@@ -216,7 +216,7 @@ The transition has three phases. Each phase is a configuration of governing auth
 
 The movement between phases is not automatic and not arbitrary; it is gated by defined conditions, so that a phase transition occurs when the Standard is genuinely ready for it and not before.
 
-The gate from **Phase A to Phase B** is met when all of the following hold: the Standard has reached a stable version 1.0.0 or later that has been in force without a breaking change for a defined consolidation period; at least one conformant implementation independent of the founding maintainer exists; and a technical steering committee of qualified individuals, willing to serve, has been identified. The independent-implementation condition is significant: a standard with only its reference implementation has not yet proven it is a standard, and Phase B — distributed governance — is appropriate once the Standard has proven itself implementable by parties beyond its author.
+The gate from **Phase A to Phase B** is met when all of the following hold: the Standard has reached a stable version 1.1.0 or later that has been in force without a breaking change for a defined consolidation period; at least one conformant implementation independent of the founding maintainer exists; and a technical steering committee of qualified individuals, willing to serve, has been identified. The independent-implementation condition is significant: a standard with only its reference implementation has not yet proven it is a standard, and Phase B — distributed governance — is appropriate once the Standard has proven itself implementable by parties beyond its author.
 
 The gate from **Phase B to Phase C** is met when all of the following hold: the technical steering committee has operated through Phase B for a defined period, demonstrating that distributed governance functions; the Standard has a community of implementers and users substantial enough to constitute a Foundation membership; and the legal and financial groundwork for constituting the Foundation — the entity, the constitution, the initial board, the trademark transfer — is complete. Phase C is the constitution of an institution, and an institution is constituted when there is a community for it to serve and the groundwork for it to stand on.
 
@@ -240,9 +240,9 @@ The Foundation will hold the assets whose stewardship requires an institution ra
 
 The Foundation's purpose is stewardship of an open standard, and its constitution will constrain it accordingly. The Foundation will not be permitted to take the Standard closed — the open licensing is a constitutional commitment and binds the Foundation as it binds every governing body. The Foundation will not be permitted to weaken the privacy prohibitions or the evidence discipline by ordinary means, for the same reason. The Foundation will not be a vendor: it stewards the Standard and the reference implementation, and it does not compete with the implementers who build on the Standard. The Foundation is designed to be a steward, and its constitution will be written to keep it one.
 
-### 7.4 The honest status at version 1.0.0
+### 7.4 The honest status at version 1.1.0
 
-At version 1.0.0, the AxonOS Standard is in Phase A. The Foundation does not yet exist; the technical steering committee does not yet exist; the founding maintainer is the governing body. This document describes Phase B and Phase C, and the gates between the phases, as a *commitment* — a published, advance commitment to the path the governance will take — and not as a description of a present state. The honest status is that the transition is designed and committed, and that its first gate, the gate to Phase B, will be met when the Standard has stabilised and an independent implementation exists. The Project records this honestly, here, because a governance document that described an aspirational future as though it were a present fact would have failed, in its own first substantive section, the discipline of honest claims that the Standard exists to uphold.
+At version 1.1.0, the AxonOS Standard is in Phase A. The Foundation does not yet exist; the technical steering committee does not yet exist; the founding maintainer is the governing body. This document describes Phase B and Phase C, and the gates between the phases, as a *commitment* — a published, advance commitment to the path the governance will take — and not as a description of a present state. The honest status is that the transition is designed and committed, and that its first gate, the gate to Phase B, will be met when the Standard has stabilised and an independent implementation exists. The Project records this honestly, here, because a governance document that described an aspirational future as though it were a present fact would have failed, in its own first substantive section, the discipline of honest claims that the Standard exists to uphold.
 
 ---
 
@@ -326,9 +326,9 @@ The process is open. Anyone may file an RFC, and an RFC from an independent impl
 
 **"What happens to the Standard if the founding maintainer departs before Phase B?"**
 
-This is the scenario the transition design exists to guard against, and the honest answer is that an early departure would be a difficult moment — which is precisely why the governance commits, in advance, to the transition rather than leaving succession unplanned. If the founding maintainer departed during Phase A, the community of implementers and the open repository would remain: the Standard is openly licensed, its full history and governance record are in a repository anyone may clone, and a successor maintainer or an early-formed steering committee could continue the governance from the public record. The departure would be difficult but not fatal, because the governance has been designed, from version 1.0.0, so that nothing essential exists only in one person's keeping.
+This is the scenario the transition design exists to guard against, and the honest answer is that an early departure would be a difficult moment — which is precisely why the governance commits, in advance, to the transition rather than leaving succession unplanned. If the founding maintainer departed during Phase A, the community of implementers and the open repository would remain: the Standard is openly licensed, its full history and governance record are in a repository anyone may clone, and a successor maintainer or an early-formed steering committee could continue the governance from the public record. The departure would be difficult but not fatal, because the governance has been designed, from version 1.1.0, so that nothing essential exists only in one person's keeping.
 
-**"Why is the Foundation not constituted now, at version 1.0.0?"**
+**"Why is the Foundation not constituted now, at version 1.1.0?"**
 
 Because a foundation constituted before there is a community to serve and a body of proven practice to institutionalise would be a shell — a legal entity with a constitution but without the substance a constitution is meant to govern. The Phase-B-to-Phase-C gate requires a community of implementers and users substantial enough to constitute a membership, and a demonstrated period of functioning distributed governance, precisely because a foundation is constituted to institutionalise something real. The governance commits to the Foundation and defines the path to it; it declines to constitute it prematurely, and Section 7.4 records that honest status rather than dressing an intention as an accomplishment.
 

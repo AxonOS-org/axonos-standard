@@ -1,4 +1,4 @@
-# Conformance — The AxonOS Standard, Version 1.0.1
+# Conformance — The AxonOS Standard, Version 1.1.0
 
 **Status:** Normative · **Companion to:** `STANDARD.md` · **License:** CC-BY-SA-4.0
 
@@ -10,7 +10,7 @@
 
 This document defines how an implementation of the AxonOS Standard is tested for conformance. It defines what it means to be conformant, what the conformance suite consists of, how each of the suite's fifty-seven tests is specified, what evidence artefact each test produces, how the suite is invoked and its results recorded, the optional Foundation-review procedure, and the consequences of a previously conformant implementation losing its conformance.
 
-This document is normative. It is the executable expression of the AxonOS Standard. Where the file `STANDARD.md` defines requirements in prose, this document defines the tests that decide, mechanically and reproducibly, whether an implementation has met them. An implementation is conformant with version 1.0.0 of the AxonOS Standard if and only if it satisfies every applicable normative requirement of `STANDARD.md` and passes the conformance suite defined here.
+This document is normative. It is the executable expression of the AxonOS Standard. Where the file `STANDARD.md` defines requirements in prose, this document defines the tests that decide, mechanically and reproducibly, whether an implementation has met them. An implementation is conformant with version 1.1.0 of the AxonOS Standard if and only if it satisfies every applicable normative requirement of `STANDARD.md` and passes the conformance suite defined here.
 
 The relationship between a prose standard and a conformance suite is worth stating carefully at the outset, because it is easy to misunderstand in either of two directions. One misunderstanding holds that the suite *is* the standard — that conformance simply means passing the tests, and the prose is decorative. The opposite misunderstanding holds that the prose is the standard and the suite is a mere convenience — that an implementation which satisfies the prose is conformant whether or not anyone runs a test. Both are wrong, and the truth is a specific middle position. The prose of `STANDARD.md` is the definition of conformance: it is the authoritative statement of what an implementation must do. The suite is the prose made executable: it is a large, carefully constructed, but necessarily finite set of checks, each of which exercises one or more of the prose requirements, and which together provide strong, reproducible, mechanical evidence that the prose requirements are met. The suite is necessary — an implementation that has not passed it has not demonstrated conformance — and it is very nearly sufficient, because it is constructed to exercise every requirement that can be exercised by a test. But it is not *logically* equivalent to the prose, because no finite suite can be equivalent to a body of requirements ranging over an infinite space of behaviours, and so the definition of conformance in Section 1 names both: the prose requirements and the suite.
 
@@ -22,7 +22,7 @@ This document is long because conformance, to be meaningful, must be precise, an
 
 ### 1.1 The definition
 
-An implementation is **conformant with version 1.0.0 of the AxonOS Standard** if and only if both of the following conditions hold.
+An implementation is **conformant with version 1.1.0 of the AxonOS Standard** if and only if both of the following conditions hold.
 
 The first condition is that the implementation satisfies every normative requirement of `STANDARD.md` — every requirement expressed with the keywords MUST, MUST NOT, REQUIRED, SHALL, or SHALL NOT — that applies to the components the implementation provides.
 
@@ -54,7 +54,7 @@ The vast majority of the suite's fifty-seven tests are blocking, because the vas
 
 ### 1.4 Conformance is always conformance with a specific version
 
-A conformance claim is always a claim about a specific version of the Standard. An implementation conformant with version 1.0.0 makes, by that fact alone, no claim about any other version, past or future. When an implementation publishes a conformance claim it MUST state the version with which it claims conformance, and the conformance suite it runs to substantiate that claim MUST be the suite at the repository tag of the stated version. A bare claim of "AxonOS conformance," with no version, is incomplete; where it appears it should be read as a claim about whatever version was current when the claim was made, and the implementer should be asked to make the version explicit.
+A conformance claim is always a claim about a specific version of the Standard. An implementation conformant with version 1.1.0 makes, by that fact alone, no claim about any other version, past or future. When an implementation publishes a conformance claim it MUST state the version with which it claims conformance, and the conformance suite it runs to substantiate that claim MUST be the suite at the repository tag of the stated version. A bare claim of "AxonOS conformance," with no version, is incomplete; where it appears it should be read as a claim about whatever version was current when the claim was made, and the implementer should be asked to make the version explicit.
 
 ---
 
@@ -62,7 +62,7 @@ A conformance claim is always a claim about a specific version of the Standard. 
 
 ### 2.1 Six categories, fifty-seven tests
 
-The conformance suite for version 1.0.0 of the Standard comprises **fifty-seven tests**, organised into **six categories**. Each category corresponds to a part of `STANDARD.md`, and each test within a category corresponds to one normative requirement or to a small group of closely related normative requirements.
+The conformance suite for version 1.1.0 of the Standard comprises **fifty-seven tests**, organised into **six categories**. Each category corresponds to a part of `STANDARD.md`, and each test within a category corresponds to one normative requirement or to a small group of closely related normative requirements.
 
 The six categories, with their test counts and the part of the Standard each exercises, are as follows.
 
@@ -336,7 +336,7 @@ An implementation that lost conformance re-attains it by the ordinary route: it 
 
 ## Section 8. The stability of the conformance suite
 
-The conformance suite is itself versioned, with the Standard. A test in the version-1.0.0 suite does not change its pass condition without a Request for Comments amending this document; only a test's prose, its diagnostic messages, or its evidence-artefact format may be revised at patch granularity, and only in ways that do not change which implementations pass.
+The conformance suite is itself versioned, with the Standard. A test in the version-1.1.0 suite does not change its pass condition without a Request for Comments amending this document; only a test's prose, its diagnostic messages, or its evidence-artefact format may be revised at patch granularity, and only in ways that do not change which implementations pass.
 
 If a defect is discovered in a test — a test that passes an implementation it should fail, or fails one it should pass — the defect is corrected at patch granularity, with a note in the Standard's changelog. Re-running the corrected suite against previously certified implementations is required only if the defect would have changed their verdict; a defect whose correction changes no verdict is a clarification, and prior certifications stand.
 
@@ -346,6 +346,6 @@ A minor-version revision of the Standard may add tests, to exercise newly added 
 
 **End of CONFORMANCE.md.**
 
-*This document is normative. It is the executable expression of the AxonOS Standard. An implementation is conformant with version 1.0.0 if and only if it satisfies the normative requirements of `STANDARD.md` and passes the fifty-seven tests specified here.*
+*This document is normative. It is the executable expression of the AxonOS Standard. An implementation is conformant with version 1.1.0 if and only if it satisfies the normative requirements of `STANDARD.md` and passes the fifty-seven tests specified here.*
 
 — The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo

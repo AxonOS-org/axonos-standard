@@ -1,6 +1,6 @@
 # The AxonOS Standard
 
-**Version 1.0.1** — Canonical Technical Standard for Deterministic Brain-Computer Interface Software
+**Version 1.1.0** — Canonical Technical Standard for Deterministic Brain-Computer Interface Software
 
 **Status:** Normative · **Date:** 2026-06-06 · **License:** CC-BY-SA-4.0
 
@@ -10,7 +10,7 @@
 
 ## Preface
 
-This document is the canonical normative text of the **AxonOS Standard**, the open technical standard for deterministic brain-computer interface (BCI) software. It defines the architecture, real-time guarantees, capability system, consent semantics, application binary interface, validation methodology, and conformance requirements that a software implementation must satisfy in order to declare itself conformant with version 1.0.0 of the AxonOS Standard.
+This document is the canonical normative text of the **AxonOS Standard**, the open technical standard for deterministic brain-computer interface (BCI) software. It defines the architecture, real-time guarantees, capability system, consent semantics, application binary interface, validation methodology, and conformance requirements that a software implementation must satisfy in order to declare itself conformant with version 1.1.0 of the AxonOS Standard.
 
 The Standard exists because the software layer that mediates between neural acquisition hardware and intelligent applications is, at the time of this writing, undefined. There is no shared contract describing how a BCI's signal-processing substrate must behave with respect to timing, how it must structure access to neural data, how it must enforce a user's revocation of consent, or how its quantitative claims must be evidenced. Every BCI software stack reinvents these decisions privately, with the consequence that no two stacks are interoperable, no claim made by one stack is verifiable against another, and no regulator, clinician, or researcher can reason about a BCI's software behaviour without access to that specific vendor's private documentation.
 
@@ -204,7 +204,7 @@ The **application binary interface**, abbreviated ABI, is the byte-exact, versio
 
 ### 4.1 What it means to be conformant
 
-An implementation is **conformant with version 1.0.0 of the AxonOS Standard** if and only if it satisfies every normative **MUST** and **MUST NOT** requirement of this Standard that applies to the components it implements, and passes the conformance suite defined in `CONFORMANCE.md` at the corresponding repository tag.
+An implementation is **conformant with version 1.1.0 of the AxonOS Standard** if and only if it satisfies every normative **MUST** and **MUST NOT** requirement of this Standard that applies to the components it implements, and passes the conformance suite defined in `CONFORMANCE.md` at the corresponding repository tag.
 
 The phrase "that applies to the components it implements" is important. This Standard governs a kernel, a software development kit, a consent subsystem, and optionally a Cognitive Hypervisor and a swarm-coordination layer. An implementation need not implement all of these. A project that implements only a conformant kernel, and relies on the reference software development kit, is assessed for conformance only against the kernel requirements and the requirements of the contracts the kernel participates in. The conformance suite is structured, in `CONFORMANCE.md`, so that the relevant subset of tests can be run against a partial implementation.
 
@@ -228,7 +228,7 @@ When this Standard says that the intent observation record **MUST** be exactly t
 
 ### 4.4 Conformance is per-version
 
-Conformance is always conformance with a specific version of this Standard. An implementation conformant with version 1.0.0 is not thereby conformant with a hypothetical future version 2.0.0, nor with a past version. When an implementation declares conformance, it **MUST** state the version, and a bare claim of "AxonOS conformance" without a version is incomplete and SHOULD be read as a claim about the latest version current at the time the claim was made.
+Conformance is always conformance with a specific version of this Standard. An implementation conformant with version 1.1.0 is not thereby conformant with a hypothetical future version 2.0.0, nor with a past version. When an implementation declares conformance, it **MUST** state the version, and a bare claim of "AxonOS conformance" without a version is incomplete and SHOULD be read as a claim about the latest version current at the time the claim was made.
 
 ### 4.5 Loss of conformance
 
@@ -658,6 +658,68 @@ The **signature** is a 64-byte Edwards-curve digital signature, per [FIPS186-5],
 
 At manifest-installation time the kernel **MUST** perform, and **MUST** pass, all of the following checks before installing the manifest. The signature **MUST** verify against the developer's published signing key. The application identifier **MUST NOT** exceed 64 bytes. The capability set **MUST NOT** have any bit set outside the admissible mask 0x0000000F. The maximum rate **MUST NOT** exceed the smallest rate ceiling among the declared capabilities. A manifest that fails any of these checks **MUST** be refused, and the refusal **MUST** be reported as the signature-invalid or the reserved-field error of Section 20, as appropriate to the failure.
 
+## Section 15. Consent state semantics
+
+### 15.1 The three states
+
+*This subsection is normative.*
+
+Consent is the user's permission for intent observations to flow, and it is enforced by the kernel, not by the application. Consent state is held **per manifest installation**, not per device: distinct applications installed on the same device may be in distinct consent states simultaneously. A manifest installed through the trusted path of Section 16 **MUST** begin in the **Granted** state; there is no separate pending state, and the act of installing a signed manifest through the trusted path constitutes the user's initial grant.
+
+The consent state of a manifest is exactly one of three values, each with a one-byte discriminant. **Granted** (`0x01`): intent observations flow to the application normally. **Suspended** (`0x02`): intent observations do not flow, and a consumer that attempts to receive an observation **MUST** receive the consent-suspended error of Section 20 (code `0x05`). **Withdrawn** (`0x03`): all observation streams for the manifest are terminated and the manifest is invalidated, and a consumer **MUST** receive the consent-withdrawn error of Section 20 (code `0x06`). The discriminant `0x00` and the discriminants `0x04` through `0xFF` are reserved and **MUST NOT** be emitted by a conformant implementation.
+
+### 15.2 The admissible transitions
+
+*This subsection is normative.*
+
+The consent state machine admits exactly the following transitions, each effected only by a trusted-path event of Section 16: from **Granted** to **Suspended**, the user pausing observation; from **Suspended** to **Granted**, the user resuming; from **Granted** to **Withdrawn**; and from **Suspended** to **Withdrawn**. The idempotent re-application of the current state — Granted to Granted, Suspended to Suspended, Withdrawn to Withdrawn — is admissible and **MUST** be treated as a no-op that does not change the state. Every other transition is inadmissible and **MUST** be refused without effecting any state change.
+
+### 15.3 The terminality of withdrawal
+
+*This subsection is normative.*
+
+The **Withdrawn** state is **terminal**. The transitions Withdrawn to Granted and Withdrawn to Suspended are inadmissible and **MUST** be refused. The only path by which a manifest may receive observations again after withdrawal is for the user to install a fresh manifest through the trusted path; a fresh manifest begins in Granted under Section 15.1, but it is a new installation, not a resumption of the withdrawn one.
+
+The non-reversibility of withdrawal is the central anti-coercion property of the consent system: were Withdrawn to Granted admissible, a privileged operator or an application could pressure the system into silently restoring a withdrawn grant, defeating the user's revocation. This property is a constitutional commitment in the sense of Section 28 and **MUST NOT** be relaxed within the major-version line.
+
+### 15.4 The timeliness of withdrawal
+
+*This subsection is normative.*
+
+A transition into the **Withdrawn** state **MUST** terminate every open observation stream for the affected manifest within **ten milliseconds** of wall-clock time from the receipt of the trusted-path withdrawal event. Withdrawal that is not timely is not withdrawal; the bound exists so that a user who revokes consent can rely on the revocation taking effect within a human-perceptible interval.
+
+### 15.5 Persistence and tamper response
+
+*This subsection is normative.*
+
+Consent state **MUST** persist across device power cycles: a manifest Granted at shutdown is restored as Granted, a Suspended manifest as Suspended, a Withdrawn manifest as Withdrawn. The stored state **MUST** be integrity-protected. If, at boot, the integrity of a manifest's stored consent state cannot be verified, the implementation **MUST** default that manifest to **Withdrawn**, **MUST** record an audit event, and **MUST NOT** deliver observations for it until the user installs a fresh manifest through the trusted path. A failed integrity check is treated as a hostile-modification event, not a recoverable error. The wire encoding of a consent event, and the reference implementation of this state machine, are specified in the `axonos-consent` component identified in Section 31.
+
+## Section 16. The trusted path
+
+### 16.1 Definition
+
+*This subsection is normative.*
+
+The **trusted path** is the input channel through which consent-state transitions are signalled to the kernel, and which the application layer provably cannot synthesise. Every transition of the consent state machine of Section 15 **MUST** originate from a trusted-path event; the kernel **MUST NOT** effect a consent transition in response to any input that does not arrive through the trusted path.
+
+### 16.2 Admissible trusted-path mechanisms
+
+*This subsection is normative.*
+
+A conformant implementation **MUST** provide at least one of the following as its trusted path, and **MUST NOT** expose any application-reachable interface capable of forging an event indistinguishable from one. The first is a **physical control** wired directly to the kernel's interrupt path, with debounce such that one actuation yields at most one event regardless of noise. The second is a **secure-world user interface** running in an isolated execution environment — for example a TrustZone-M secure-world partition — that the normal-world application cannot drive, observe, or impersonate.
+
+### 16.3 Authentication
+
+*This subsection is normative.*
+
+Every trusted-path event **MUST** be authenticated before the consent transition it requests is admitted. The event carries a digital signature that the kernel **MUST** verify against the trusted-path public key provisioned in the device's secure element; an event whose signature does not verify **MUST** be refused with the signature-invalid error of Section 20 (code `0x08`) and **MUST NOT** cause any state change. The application layer **MUST NOT** be able to emit, forge, replay, or suppress a trusted-path event.
+
+### 16.4 The audit record
+
+*This subsection is normative.*
+
+Every trusted-path event that the consent state machine accepts **SHOULD** be recorded in a tamper-evident audit log accessible to the device operator and not to the application layer. An audit record **SHOULD** include the kernel monotonic timestamp of the event, the affected manifest identifier, the from-state and the to-state, and a cryptographic hash of the event. The audit log is the evidence from which a withdrawal, and the time at which it took effect, can be reconstructed after the fact.
+
 ---
 
 # Part IV — The Application Binary Interface
@@ -700,7 +762,7 @@ Code 0x01, **version mismatch**: the handshake of Section 18 found differing ver
 
 **Level L2**, *measured on reference hardware*: the claim is a value measured on the reference hardware, under stated conditions, with the measurement trace published. The artefact is the trace, together with the post-processing that derived the headline number. A measurement on hardware other than the reference hardware is not L2.
 
-**Level L3**, *independently validated*: the claim is an L2 measurement that has additionally been reproduced by an independent third party, on a separate instance of the reference hardware, and witnessed by a signed report. The artefact is the signed report identifying the reviewer, the date, the hardware, and the verdict. The AxonOS Project makes no L3 claim at version 1.0.0; the companion `VALIDATION.md` records this and identifies the first L3 claim the Project intends to produce.
+**Level L3**, *independently validated*: the claim is an L2 measurement that has additionally been reproduced by an independent third party, on a separate instance of the reference hardware, and witnessed by a signed report. The artefact is the signed report identifying the reviewer, the date, the hardware, and the verdict. The AxonOS Project makes no L3 claim at version 1.1.0; the companion `VALIDATION.md` records this and identifies the first L3 claim the Project intends to produce.
 
 ## Section 23. Falsifiability
 
@@ -708,7 +770,7 @@ Code 0x01, **version mismatch**: the handshake of Section 18 found differing ver
 
 ## Section 24. Conformance criteria
 
-*This subsection is normative.* An implementation is conformant with version 1.0.0 of this Standard if and only if it satisfies every applicable normative requirement of Sections 5 through 23 and Sections 26 through 31, and passes the conformance suite defined in `CONFORMANCE.md` at the corresponding repository tag. The conformance suite is the executable expression of the Standard's requirements; the companion document defines its 57 tests, organised in six categories corresponding to the real-time contract, the capability system, the consent state machine, the wire format, the error taxonomy, and the validation policy.
+*This subsection is normative.* An implementation is conformant with version 1.1.0 of this Standard if and only if it satisfies every applicable normative requirement of Sections 5 through 23 and Sections 26 through 31, and passes the conformance suite defined in `CONFORMANCE.md` at the corresponding repository tag. The conformance suite is the executable expression of the Standard's requirements; the companion document defines its 57 tests, organised in six categories corresponding to the real-time contract, the capability system, the consent state machine, the wire format, the error taxonomy, and the validation policy.
 
 ## Section 25. Self-certification and Foundation review
 
@@ -772,7 +834,7 @@ Code 0x01, **version mismatch**: the handshake of Section 18 found differing ver
 
 ---
 
-**End of the AxonOS Standard, version 1.0.0.**
+**End of the AxonOS Standard, version 1.1.0.**
 
 *This document is the canonical normative text. Any rendering of it in another medium is informative. In the event of disagreement between this file, at the tagged commit, and any rendering, this file governs.*
 

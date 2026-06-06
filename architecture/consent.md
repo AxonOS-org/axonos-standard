@@ -1,6 +1,6 @@
 # Architecture: The Consent Subsystem
 
-**AxonOS Standard v1.0.1** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
 
 *An architecture chapter of the AxonOS Standard. Informative throughout. This chapter elaborates the consent subsystem; the normative requirements are in `STANDARD.md` Sections 15 and 16. Where this chapter and the Standard differ, the Standard governs.*
 

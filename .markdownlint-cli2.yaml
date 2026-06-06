@@ -1,8 +1,10 @@
 config:
   default: true
   MD013: false   # line length — normative prose has long sentences
+  MD025: false   # multiple H1 — Part headings are intentionally top-level
   MD033: false   # inline HTML
-  MD036: false   # emphasis as heading — house style for status/version lines
+  MD036: false   # emphasis as heading — house style for status/normative-marker lines
+  MD037: false   # spaces inside emphasis — false positives in normative prose
   MD041: false
   MD024: false   # repeated sub-headings across parts
   MD026: false

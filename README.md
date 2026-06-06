@@ -1,6 +1,6 @@
 # The AxonOS Standard
 
-**Version 1.0.1** — the canonical open technical standard for deterministic brain-computer interface software.
+**Version 1.1.0** — the canonical open technical standard for deterministic brain-computer interface software.
 
 **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
 
@@ -101,15 +101,15 @@ A reader who carries these four ideas into the Standard will find that a great m
 
 ## The status of the Standard
 
-This is **version 1.0.0**, the first canonical release of the AxonOS Standard.
+This is **version 1.1.0**. The first canonical release was version 1.0.0 (2026-05-21); version 1.1.0 adds Sections 15 and 16 — the consent state semantics and the trusted path — completing the Security and Privacy Model of Part III.
 
-The Standard is, at this release, in **Phase A** of the governance transition described in `GOVERNANCE.md`. Phase A is the founding configuration: the Standard is under the stewardship of its founding maintainer, who is the governing body for the Request-for-Comments process. The governance document defines, and the Project commits to, the gated three-phase path by which that founding stewardship will become first a distributed technical steering committee and then a constituted Foundation — a path designed in advance, at version 1.0.0, precisely so that the transition is an orderly execution of a pre-committed design rather than an improvised response to a future need.
+The Standard is, at this release, in **Phase A** of the governance transition described in `GOVERNANCE.md`. Phase A is the founding configuration: the Standard is under the stewardship of its founding maintainer, who is the governing body for the Request-for-Comments process. The governance document defines, and the Project commits to, the gated three-phase path by which that founding stewardship will become first a distributed technical steering committee and then a constituted Foundation — a path designed in advance, at version 1.1.0, precisely so that the transition is an orderly execution of a pre-committed design rather than an improvised response to a future need.
 
 The honest status of several forward-looking elements is recorded plainly in the documents themselves, in keeping with the evidence discipline. The Foundation does not yet exist; `GOVERNANCE.md` Section 7.4 says so. No claim has yet been independently reproduced at evidence level L3; `VALIDATION.md` Section 5.3 says so, and records what the first L3 claim is intended to be. The Project's discipline is to record what is true, including the truth of what is not yet accomplished, rather than to present an aspiration as a fact.
 
 ## Versioning
 
-The Standard is versioned under semantic versioning, with a major, a minor, and a patch component, as `STANDARD.md` Section 26 defines. A major increment accompanies a breaking change — a change to a normative requirement, the addition or removal of a capability, a change to the wire format, a relaxation of a real-time bound. A minor increment accompanies a backward-compatible addition. A patch increment accompanies an editorial correction that changes no requirement. Conformance is always conformance with a specific version; an implementation conformant with version 1.0.0 makes no claim about any other version.
+The Standard is versioned under semantic versioning, with a major, a minor, and a patch component, as `STANDARD.md` Section 26 defines. A major increment accompanies a breaking change — a change to a normative requirement, the addition or removal of a capability, a change to the wire format, a relaxation of a real-time bound. A minor increment accompanies a backward-compatible addition. A patch increment accompanies an editorial correction that changes no requirement. Conformance is always conformance with a specific version; an implementation conformant with version 1.1.0 makes no claim about any other version.
 
 The authoritative text of the Standard, at any version, is the content of this repository at the Git commit corresponding to that version's release tag, recorded in the `VERSION` file. Any rendering of the Standard in another medium — an HTML page, a typeset document, a translation — is informative, and in the event of a discrepancy the repository file at the tagged commit governs.
 
@@ -117,7 +117,7 @@ The authoritative text of the Standard, at any version, is the content of this r
 
 The full conformance regime is defined in `CONFORMANCE.md`; this section gives the reader arriving at the repository enough to understand what conformance is before they open that document.
 
-An implementation is **conformant with version 1.0.0 of the AxonOS Standard** if and only if it satisfies every applicable normative requirement of `STANDARD.md` and passes the conformance suite — the fifty-seven tests of `CONFORMANCE.md` Section 5 — at the corresponding repository tag.
+An implementation is **conformant with version 1.1.0 of the AxonOS Standard** if and only if it satisfies every applicable normative requirement of `STANDARD.md` and passes the conformance suite — the fifty-seven tests of `CONFORMANCE.md` Section 5 — at the corresponding repository tag.
 
 Conformance is **scoped to the components an implementation provides**. The Standard governs a kernel, a software development kit, a consent subsystem, and — for deployments that need them — a Cognitive Hypervisor and a swarm-coordination layer. An implementation need not provide all of these; one that provides only a kernel is assessed only against the kernel requirements and the kernel's side of the interface contracts, and the conformance suite is organised so that the relevant subset of tests can be run against a partial implementation.
 
@@ -203,7 +203,7 @@ The kernel's real-time promise is the six-clause dual-core contract of `STANDARD
 
 **Why is the Standard so long?** Because the brain-computer-interface domain is unforgiving — a missed deadline, a leaked category of neural data, an unhonoured revocation of consent are safety and rights failures — and precision in an unforgiving domain is necessarily verbose. The length is the cost of leaving nothing ambiguous, and ambiguity is what causes independent implementers to diverge.
 
-**Who governs the Standard?** At version 1.0.0, the founding maintainer, in Phase A of the governance transition. `GOVERNANCE.md` defines and commits the path toward a distributed technical steering committee and then a constituted Foundation. Every change, in every phase, flows through the public Request-for-Comments process.
+**Who governs the Standard?** At version 1.1.0, the founding maintainer, in Phase A of the governance transition. `GOVERNANCE.md` defines and commits the path toward a distributed technical steering committee and then a constituted Foundation. Every change, in every phase, flows through the public Request-for-Comments process.
 
 **What can I rely on not changing?** Within a major-version line, no normative requirement is removed, no defined term is redefined, no wire-format field is repurposed, and no real-time bound is relaxed. Beyond that, the constitutional commitments — the privacy prohibitions, the evidence discipline, the open licensing — may be changed only by an exceptional procedure carrying an exceptional burden, so a user, an implementer, or a regulator may rely on those absolutely.
 

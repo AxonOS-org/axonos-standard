@@ -1,6 +1,6 @@
 # Security Policy — The AxonOS Standard
 
-**AxonOS Standard v1.0.1** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
 
 This document is the vulnerability-disclosure policy for the AxonOS
 Standard and its reference implementation. It is distinct from the

@@ -1,12 +1,29 @@
 # Changelog and Release Record — The AxonOS Standard
 
-**AxonOS Standard v1.0.1** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
 
 This document records the release history of the AxonOS Standard. Every release is recorded here, and every change in a release is traceable, through the governance process of `GOVERNANCE.md`, to the Request-for-Comments document that introduced it.
 
 For the first canonical release, version 1.0.0, this document additionally serves as a comprehensive release record: because version 1.0.0 introduces the entire Standard at once, with no prior version against which to record incremental change, the most useful thing this document can do is set out, completely, what version 1.0.0 establishes — what each document contains, what the load-bearing design decisions are, what the honest status of each forward-looking element is — so that a reader returning to this changelog in future, after subsequent releases have recorded their incremental changes against it, can see precisely what the foundation was.
 
 ---
+
+## Version 1.1.0 — 2026-06-06
+
+Version 1.1.0 is a minor release. It adds two normative sections to `STANDARD.md` and brings every internal version reference into agreement with the release version. It removes no requirement, relaxes no bound, and changes no existing conformance criterion; an implementation conformant with version 1.0.0 remains conformant with version 1.1.0.
+
+### Added
+
+- **Section 15, Consent state semantics**, and **Section 16, The trusted path**, completing Part III, the Security and Privacy Model. These sections — the kernel-enforced three-state consent machine, with its terminal withdrawn state and its ten-millisecond withdrawal bound, and the unforgeable trusted-path requirement that protects consent transitions — were referenced throughout the Standard and exercised by conformance category C3, but had not previously been written as numbered sections. Their addition gives those requirements their normative home and brings the document to the thirty-one numbered sections its structure describes. The requirements are consistent with, and implemented by, the `axonos-consent` reference component.
+
+### Changed
+
+- Every internal reference to the Standard's own version was updated to 1.1.0, so that the document header, the conformance clauses of Sections 5 and 24, the closing line, and the corresponding passages of `README.md` state a single consistent version. At version 1.0.1 the headers carried 1.0.1 while the body still referred to 1.0.0; this release removes that drift.
+- Updated the continuous-integration actions to their Node 24 versions (`actions/checkout` v5, `actions/setup-python` v6, `markdownlint-cli2-action` v23) and tightened the section-numbering check to require contiguous numbering now that the gap is closed.
+
+### Notes
+
+- This is a **minor** increment per `STANDARD.md` Section 26: a backward-compatible addition. The added sections formalise requirements that were already referenced and already tested, rather than introducing new obligations.
 
 ## Version 1.0.1 — 2026-06-06
 

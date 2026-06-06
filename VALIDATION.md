@@ -1,4 +1,4 @@
-# Validation — The AxonOS Standard, Version 1.0.1
+# Validation — The AxonOS Standard, Version 1.1.0
 
 **Status:** Normative · **Companion to:** `STANDARD.md` · **License:** CC-BY-SA-4.0
 
@@ -46,7 +46,7 @@ An L2 measurement **may not** be used to make an L1 claim. This is the most impo
 
 An L1 proof **may** stand without an L2 measurement, but the discipline recommends against it. A bound proven over the whole input space is, logically, sufficient on its own; the measurement adds nothing to the proof's coverage. But the discipline recommends that an L1 claim be accompanied by an L2 measurement anyway, for two reasons. The measurement corroborates the proof — if the proof and the measurement disagree, something is wrong, and the disagreement is worth discovering. And the measurement guards against the proof being a proof of the wrong thing — a proof can be valid and yet not bound the quantity the reader cares about, if the model the proof ranges over has drifted from the system that actually runs, and a measurement of the real system is a check on that drift.
 
-An L3 claim **may not** be self-certified. The independence is the entire content of L3; a claim of L3 evidence where the "independent" party is the Project itself, or a party the Project controls or pays for a favourable verdict, is not an L3 claim and labelling it L3 is a misrepresentation. The discipline is explicit: at version 1.0.0 the AxonOS Project makes no L3 claim, because no genuinely independent reproduction has yet occurred, and the catalogue of Section 5 records that absence honestly rather than dressing an L2 claim in an L3 label.
+An L3 claim **may not** be self-certified. The independence is the entire content of L3; a claim of L3 evidence where the "independent" party is the Project itself, or a party the Project controls or pays for a favourable verdict, is not an L3 claim and labelling it L3 is a misrepresentation. The discipline is explicit: at version 1.1.0 the AxonOS Project makes no L3 claim, because no genuinely independent reproduction has yet occurred, and the catalogue of Section 5 records that absence honestly rather than dressing an L2 claim in an L3 label.
 
 ---
 
@@ -110,7 +110,7 @@ The L2 artefact additionally records the **measurement conditions**: the identif
 
 An L3 claim's artefact is the **signed report of the independent party**. It identifies the party and their affiliation; states the date and the location of the reproduction; identifies the reference-hardware instance the independent party used, which is a separate instance from the Project's own; describes the procedure the independent party followed, which is the procedure the L2 artefact's measurement conditions specify; states the result the independent party observed; and states the party's verdict — reproduced, not reproduced, or reproduced with stated qualifications. The report is signed, cryptographically or by a verifiable equivalent, by the independent party, so that its provenance is established.
 
-At version 1.0.0 of the Standard, the AxonOS Project holds no L3 artefact, because no independent reproduction has yet been performed. Section 5 records this, and the discipline's honesty about it — the refusal to label any claim L3 in the absence of a genuine independent report — is itself a demonstration of the discipline.
+At version 1.1.0 of the Standard, the AxonOS Project holds no L3 artefact, because no independent reproduction has yet been performed. Section 5 records this, and the discipline's honesty about it — the refusal to label any claim L3 in the absence of a genuine independent report — is itself a demonstration of the discipline.
 
 ---
 
@@ -148,9 +148,9 @@ The validation discipline requires that the AxonOS Project maintain a **claims c
 
 The catalogue exists so that the publishing rule is auditable in one place. Without a catalogue, checking that the Project honours the publishing rule would mean scouring every public surface for every number and checking each individually. With a catalogue, the check has a single locus: a reviewer reads the catalogue, and for each entry confirms that the evidence level is stated, the artefact is linked, the artefact is accessible, and the claim is falsifiable. The conformance suite's category C6 tests, defined in `CONFORMANCE.md`, perform exactly this check against the catalogue.
 
-### 5.2 The catalogue at version 1.0.0
+### 5.2 The catalogue at version 1.1.0
 
-The claims catalogue at version 1.0.0 of the Standard records the following principal claims. Each is stated here with its value and evidence level; the artefact links are maintained in the catalogue file itself in the repository, because links are the kind of thing that is correctly maintained in a versioned file rather than frozen into a standard's prose.
+The claims catalogue at version 1.1.0 of the Standard records the following principal claims. Each is stated here with its value and evidence level; the artefact links are maintained in the catalogue file itself in the repository, because links are the kind of thing that is correctly maintained in a versioned file rather than frozen into a standard's prose.
 
 The **end-to-end worst-case response time** is claimed at one thousand microseconds as an upper bound, at evidence level L1, with the bounded-model-checker proof as artefact. The corresponding L2 measurement, reported as a complement, is a worst observed value of nine hundred and seventy-two microseconds over a twelve-hour soak of approximately 10.8 million epochs, with zero deadline misses.
 
@@ -162,11 +162,11 @@ The **consent-withdrawal transition time** is claimed as a bounded number of pro
 
 The **improvement factor** of the reference kernel's jitter over a baseline general-purpose operating system's jitter on the same hardware is reported as a derived quantity, tagged derived, with both input measurements — the reference kernel's jitter and the baseline's jitter — cited as L2 claims.
 
-### 5.3 The absence of L3 claims at version 1.0.0
+### 5.3 The absence of L3 claims at version 1.1.0
 
-The claims catalogue at version 1.0.0 contains **no L3 claim**. This absence is recorded here explicitly, and recorded in the catalogue itself, because the discipline's integrity depends on the absence being visible rather than hidden.
+The claims catalogue at version 1.1.0 contains **no L3 claim**. This absence is recorded here explicitly, and recorded in the catalogue itself, because the discipline's integrity depends on the absence being visible rather than hidden.
 
-L3 evidence requires an independent reproduction by a party with no stake in the Project, and at version 1.0.0 no such reproduction has occurred. The Project could not honestly label any claim L3, and the discipline forbids it from doing so. The catalogue therefore records the highest evidence level the Project genuinely holds for each claim — L1 for the proven bounds, L2 for the measured values — and records, as a stated item of future work, that the first L3 claim the Project intends to pursue is an independent reproduction of the end-to-end worst-case response time, to be sought in conjunction with the first clinical-pilot deployment, where an independent clinical-engineering party will have both the reference hardware and the motivation to perform the reproduction.
+L3 evidence requires an independent reproduction by a party with no stake in the Project, and at version 1.1.0 no such reproduction has occurred. The Project could not honestly label any claim L3, and the discipline forbids it from doing so. The catalogue therefore records the highest evidence level the Project genuinely holds for each claim — L1 for the proven bounds, L2 for the measured values — and records, as a stated item of future work, that the first L3 claim the Project intends to pursue is an independent reproduction of the end-to-end worst-case response time, to be sought in conjunction with the first clinical-pilot deployment, where an independent clinical-engineering party will have both the reference hardware and the motivation to perform the reproduction.
 
 The honest recording of an absence is a small thing, but it is the kind of small thing the whole discipline is built to make habitual. A project that will honestly write "we have no L3 evidence" in its own catalogue is a project whose L1 and L2 labels can be believed, because it has demonstrated that it labels by the evidence and not by the aspiration.
 
@@ -296,7 +296,7 @@ The validation discipline is best understood through the specific failures it ex
 
 **The unreproducible benchmark.** A measurement on hardware that is not the reference hardware, or under conditions not stated, or with the measurement environment not described well enough to reproduce. The discipline's requirement that L2 evidence be measured on the reference hardware, under stated conditions, with the conditions in the artefact, forbids this: a measurement nobody else can reproduce is not L2 evidence.
 
-**The self-certified independence.** An evaluation by a party presented as independent but in fact controlled by, or paid for a favourable verdict by, the party whose claim is evaluated. The discipline's definition of L3 — reproduction by a party with no stake — forbids this, and the discipline's insistence that the Project hold no L3 claim at version 1.0.0, because no genuinely independent reproduction has occurred, is the discipline declining to commit this very anti-pattern.
+**The self-certified independence.** An evaluation by a party presented as independent but in fact controlled by, or paid for a favourable verdict by, the party whose claim is evaluated. The discipline's definition of L3 — reproduction by a party with no stake — forbids this, and the discipline's insistence that the Project hold no L3 claim at version 1.1.0, because no genuinely independent reproduction has occurred, is the discipline declining to commit this very anti-pattern.
 
 **The vanishing baseline.** A comparative claim — "ten times faster than the alternative" — where the alternative, the baseline, is not identified, or was measured under conditions favourable to the comparison. The discipline's treatment of comparative figures as derived quantities, requiring both the claim's measurement and the baseline's measurement to be cited as L2 claims with their own artefacts, forbids this: the baseline is a claim too, and it carries the same burden.
 

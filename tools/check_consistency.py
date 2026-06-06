@@ -53,8 +53,7 @@ def section_set():
 def c_sections():
     s=section_set()
     if len(s)!=len(set(s)): return fail(f"duplicate section numbers: {s}")
-    if s!=sorted(s): return fail(f"section numbers out of order: {s}")
-    # Gaps are tolerated (a number may be referenced before its heading exists); duplicates and disorder are not.
+    if s!=list(range(1,len(s)+1)): return fail(f"section numbers not contiguous 1..N: {s}")
     return True
 
 def c_xref():
