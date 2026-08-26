@@ -2,7 +2,7 @@
 
 **Status:** Normative · **Companion to:** `STANDARD.md` · **License:** CC-BY-SA-4.0
 
-**Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**Editor:** Denis Yermakou · **Project:** AxonOS
 
 ---
 
@@ -348,4 +348,4 @@ A minor-version revision of the Standard may add tests, to exercise newly added 
 
 *This document is normative. It is the executable expression of the AxonOS Standard. An implementation is conformant with version 1.1.0 if and only if it satisfies the normative requirements of `STANDARD.md` and passes the fifty-seven tests specified here.*
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project

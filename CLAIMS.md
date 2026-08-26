@@ -1,6 +1,6 @@
 # Claims Catalogue — The AxonOS Standard
 
-**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS
 
 *This is the **claims catalogue** required by `VALIDATION.md` Section 5: the
 single, public, maintained document that lists every quantitative claim the
@@ -58,12 +58,27 @@ catalogue's history.
 
 | id | Claim | Value | Level | Artefact | Falsifier |
 |---|---|---|---|---|---|
+> **Correction, published 2026-08-23.** C-4 carried evidence level **L1** in
+> this catalogue and cited `handle_withdraw_terminates` as the harness backing
+> it. That harness proves termination and target-state correctness; it contains
+> no cycle assertion, and a bounded model checker over Rust MIR cannot produce a
+> Cortex-M cycle count. `axonos-consent` corrected this on 2026-08-16 in its own
+> README and SPEC §4.1; the correction had not propagated here, so for a week
+> this catalogue overstated the evidence for the very claim it exists to record.
+>
+> The row is now split: the ≤ 1648 cycle figure is tagged **analytical**, and a
+> separate **C-4·L1** row records what the harness does prove, including its
+> open coverage gap. A catalogue that lags its sources is worse than no
+> catalogue, because it is trusted; the propagation gap is recorded as an open
+> process defect.
+
 | **C-1** | End-to-end worst-case response time, upper bound | **≤ 1000 µs** | **L1** | [`axonos-scheduler` BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-scheduler/kani-proofs/src/main.rs) — the bounded-model-checking proofs of the response-time analysis from which the bound is derived for the reference pipeline's verified per-task WCETs | A reachable schedule, within the model's admissible inputs, whose response time exceeds 1000 µs |
 | **C-1·L2** | End-to-end worst-case response time, worst observed (complement to C-1) | **972 µs** over a 12-hour soak of ≈ 10.8 million epochs, **0 deadline misses** | L2 | Soak trace — **publication pending** (see *Artefact availability* below) | A soak under the stated conditions on the reference hardware observing a response time above 972 µs, or any deadline miss |
 | **C-2** | Observation-cadence jitter, one standard deviation | **2.1 µs** | **L2** | Soak trace — **publication pending** | A soak under the stated conditions measuring σ above 2.1 µs |
 | **C-3** | Inter-process-communication slot latency, upper bound | **≤ 0.5 µs** | **L1** | [`axonos-spsc` BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-spsc/kani-proofs/src/main.rs) — proofs of the single-producer single-consumer slot's bounded behaviour | A reachable slot operation, within the model, exceeding 0.5 µs |
 | **C-3·L2** | Inter-process-communication slot latency, measured (complement to C-3) | **0.2 µs** | L2 | Measurement trace — **publication pending** | A measurement under the stated conditions exceeding 0.2 µs |
-| **C-4** | Consent-withdrawal transition time, upper bound | **≤ 1648 cycles** (≈ 9.8 µs at 168 MHz, Cortex-M4F) | **L1** | [`axonos-consent` `kani/handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) — proof that withdrawal terminates within a bounded number of steps | A reachable withdrawal, within the model, exceeding the bound |
+| **C-4** | Consent-withdrawal transition time, upper bound | **≤ 1648 cycles** (≈ 9.8 µs at 168 MHz, Cortex-M4F) | **analytical** | Instruction counting against the ISA timing reference; derivation artefact **publication pending**. **Not** a Kani output: a bounded model checker over Rust MIR cannot compute Cortex-M cycle counts. See [`axonos-consent` SPEC §4.1](https://github.com/AxonOS-org/axonos-consent/blob/main/SPEC.md) | An execution on the reference hardware exceeding 1648 cycles, or an error in the instruction count |
+| **C-4·L1** | Consent withdrawal terminates, and reaches the correct target state | termination guaranteed | **L1** | [`axonos-consent` `kani/handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) — proves termination and target-state correctness. Coverage gap recorded as open: the harness exercises the `Granted` starting state only | A reachable withdrawal, within the model, that fails to terminate or reaches the wrong state |
 | **C-4·L2** | Consent-withdrawal transition time, measured (complement to C-4) | Median and worst-observed over an 18-hour soak | L2 | [`axonos-consent` `benches/withdrawal_latency.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/benches/withdrawal_latency.rs) — the re-runnable measurement procedure; reference-hardware soak trace **publication pending** | A soak under the stated conditions contradicting the measured bound |
 | **C-5** | Jitter improvement factor of the reference kernel over a baseline general-purpose OS on the same hardware | **derived** from C-2 and the baseline measurement | **derived** | Computed by division from C-2 (reference-kernel jitter, L2) and the baseline-OS jitter measurement (L2) — **baseline trace publication pending** | A re-measurement of either input that changes the ratio, or an arithmetic error in the division |
 
@@ -147,4 +162,4 @@ claim.
 
 ---
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project

@@ -2,7 +2,7 @@
 
 **Status:** Normative for the meaning of every term it defines · **Companion to:** `STANDARD.md` · **License:** CC-BY-SA-4.0
 
-**Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**Editor:** Denis Yermakou · **Project:** AxonOS
 
 ---
 
@@ -442,4 +442,4 @@ Where the draft unified terminology for brain-computer interfaces, under develop
 
 *This document is normative for the meaning of every term it defines. Where it and any other AxonOS document use the same term, this glossary governs.*
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project

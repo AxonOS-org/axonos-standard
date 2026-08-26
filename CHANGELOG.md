@@ -1,6 +1,6 @@
 # Changelog and Release Record — The AxonOS Standard
 
-**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS
 
 This document records the release history of the AxonOS Standard. Every release is recorded here, and every change in a release is traceable, through the governance process of `GOVERNANCE.md`, to the Request-for-Comments document that introduced it.
 
@@ -172,4 +172,4 @@ Version 1.0.0, as the foundational release, has been recorded in full above. Fut
 
 *This document is the release record of the AxonOS Standard. The authoritative Standard at any version is the content of the repository at that version's release tag.*
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project

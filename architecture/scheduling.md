@@ -1,6 +1,6 @@
 # Architecture: Real-Time Scheduling and Timing Analysis
 
-**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS
 
 *An architecture chapter of the AxonOS Standard. Informative throughout. This chapter elaborates the scheduling discipline and the worst-case-timing analysis; the normative requirements are in `STANDARD.md` Sections 7 and 8. Where this chapter and the Standard differ, the Standard governs.*
 
@@ -282,4 +282,4 @@ That chain is the machinery behind the kernel's unusual promise: not a measured 
 
 *End of the scheduling and timing-analysis chapter.*
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project
