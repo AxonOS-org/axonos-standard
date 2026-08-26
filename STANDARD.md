@@ -734,6 +734,32 @@ Every trusted-path event that the consent state machine accepts **SHOULD** be re
 
 ## Section 19. The intent-observation wire format
 
+> **Erratum, filed 2026-08-26. This section does not describe any shipped
+> implementation. Do not implement from it.**
+>
+> Section 19 specifies a 28-byte record. `axonos-sdk` emits and consumes a
+> **32-byte** record, asserted at compile time, specified in
+> [RFC-0006](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0006-intent-wire-format-abi.md);
+> the conformance vectors and all six independent codecs implement that record.
+> The two share no field at any offset. An implementer working from this section
+> will produce bytes that no AxonOS component accepts, and will fail every
+> conformance vector.
+>
+> **Until this is resolved, RFC-0006 is the record to implement.**
+>
+> The correction is filed as
+> [RFC-0011](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0011-align-standard-section-19-with-shipped-record.md)
+> and is a breaking change under Section 26, carrying a major-version increment
+> and the ninety-day notice of Section 27. It is not applied here, because
+> Section 28 forbids removing a wire-format field within a major-version line
+> and `GOVERNANCE.md` requires every change to pass through the public
+> amendment process. This erratum warns; it changes no requirement.
+>
+> Section 10.2 and Section 10.4 are affected in consequence: the slot's trailing
+> consistency field is a copy of the record's sequence number, and the shipped
+> record has no sequence number. RFC-0011 proposes moving that field into the
+> ring buffer, where it belongs.
+
 *This subsection is normative.* Every intent observation crossing the boundary from the kernel to the software development kit **MUST** be a record of exactly 28 bytes, little-endian, with fields at exactly the following byte offsets.
 
 At offset 0, one byte, the **kind**: the discriminant of the capability to which this observation corresponds. At offset 1, one byte, the **flags**: a bitfield in which bit 0 is a consumer-advisory high-confidence indicator and bits 1 through 7 are reserved and **MUST** be zero. At offset 2, two bytes, the **confidence**: the kernel's classifier posterior, encoded as a Q1.15 fixed-point fraction. At offset 4, eight bytes, the **timestamp**: the value of the monotonic clock, in microseconds, at the instant of emission. At offset 12, eight bytes, the **sequence number**: a per-stream counter beginning at zero and incremented by one for each observation. At offset 20, four bytes, the **source node identifier**: the identifier of the acquisition node, zero for a single-node deployment. At offset 24, four bytes, the **reserved** field, which **MUST** be zero.
