@@ -2,7 +2,7 @@
 
 **Version 1.1.0** — the canonical open technical standard for deterministic brain-computer interface software.
 
-**Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**Editor:** Denis Yermakou · **Project:** AxonOS
 
 ---
 
@@ -311,4 +311,4 @@ This large free space is deliberate. A standard that constrained these things wo
 
 The AxonOS Standard is an attempt to bring, to the software substrate of brain-computer interfaces, the kind of shared, precise, openly published, independently verifiable contract that other mature engineering domains take for granted and that this domain, for now, lacks. It is offered in the belief that a field handling data as intimate as neural data, and building devices with stakes as high as a brain-computer interface's, should not have its most fundamental software behaviours — its timing, its handling of neural data, its honouring of consent, its standard of evidence — left undefined and privately reinvented by every vendor. The contract in this repository is the Project's proposal for what that shared definition should be. It is openly licensed so that it can be adopted, scrutinised, criticised, and improved by anyone, and it is governed by a published process so that its evolution is visible and accountable. An implementer who builds against it, a reviewer who tests its claims, a contributor who proposes its improvement — each is doing exactly what an open standard exists to invite.
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project

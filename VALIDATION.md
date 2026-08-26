@@ -2,7 +2,7 @@
 
 **Status:** Normative · **Companion to:** `STANDARD.md` · **License:** CC-BY-SA-4.0
 
-**Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**Editor:** Denis Yermakou · **Project:** AxonOS
 
 ---
 
@@ -342,4 +342,4 @@ The Standard's own numbers are held to exactly the discipline the Standard impos
 
 *This document is normative. Every quantitative claim made under the AxonOS name is subject to the discipline defined here. The conformance suite's category C6 tests check an implementation's adherence to it.*
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project

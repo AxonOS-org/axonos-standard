@@ -1,6 +1,6 @@
 # Architecture: The Real-Time Microkernel
 
-**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS
 
 *An architecture chapter of the AxonOS Standard. Informative throughout. This chapter elaborates the design and implementation of the kernel; the normative requirements it must satisfy are in Part II of `STANDARD.md`. Where this chapter and the Standard differ, the Standard governs.*
 
@@ -250,7 +250,7 @@ An implementer building an independent kernel should expect a similar arc. The m
 
 *End of the kernel architecture chapter.*
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project
 
 ## C. Frequently raised objections, and the answers
 
@@ -290,4 +290,4 @@ The Standard is the contract. The conformance suite is the test. This chapter is
 
 *End of the kernel architecture chapter.*
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project

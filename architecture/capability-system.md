@@ -1,6 +1,6 @@
 # Architecture: The Capability System and Neural Permissions
 
-**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS
 
 *An architecture chapter of the AxonOS Standard. Informative throughout. This chapter elaborates the capability system; the normative requirements are in `STANDARD.md` Sections 12 through 14. Where this chapter and the Standard differ, the Standard governs.*
 
@@ -268,4 +268,4 @@ The capability system is the AxonOS Standard's privacy model, and its central id
 
 *End of the capability-system architecture chapter.*
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project

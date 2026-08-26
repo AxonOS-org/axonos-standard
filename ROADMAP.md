@@ -1,6 +1,6 @@
 # Roadmap — The AxonOS Standard
 
-**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS
 
 *This document is **informative**. It imposes no requirement and defines no
 conformance criterion. It describes the AxonOS Project's intended path forward
@@ -162,4 +162,4 @@ be whatever the work and the independent parties make them.
 
 ---
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project

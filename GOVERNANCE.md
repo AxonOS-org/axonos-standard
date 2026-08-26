@@ -2,7 +2,7 @@
 
 **Status:** Normative · **Companion to:** `STANDARD.md` · **License:** CC-BY-SA-4.0
 
-**Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**Editor:** Denis Yermakou · **Project:** AxonOS
 
 ---
 
@@ -356,4 +356,4 @@ The Standard, the governance that evolves it, and the suite that tests against i
 
 *This document is normative. A change to the Standard made otherwise than by the process defined here is not a valid change. The authoritative Standard is always the text this process produces, at the tagged commit it produces.*
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project

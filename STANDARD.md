@@ -4,7 +4,7 @@
 
 **Status:** Normative · **Date:** 2026-06-06 · **License:** CC-BY-SA-4.0
 
-**Editor:** Denis Yermakou · **Project:** AxonOS · **Domicile:** Singapore
+**Editor:** Denis Yermakou · **Project:** AxonOS
 
 ---
 
@@ -838,4 +838,4 @@ Code 0x01, **version mismatch**: the handshake of Section 18 found differing ver
 
 *This document is the canonical normative text. Any rendering of it in another medium is informative. In the event of disagreement between this file, at the tagged commit, and any rendering, this file governs.*
 
-— The AxonOS Project · Singapore · Zurich · Berlin · Milano · San Mateo
+— The AxonOS Project
