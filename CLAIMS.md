@@ -56,8 +56,6 @@ Claim identifiers are stable: an entry's `id` does not change when the entry is
 re-graded, so that external citations to a claim remain valid across the
 catalogue's history.
 
-| id | Claim | Value | Level | Artefact | Falsifier |
-|---|---|---|---|---|---|
 > **Correction, published 2026-08-23.** C-4 carried evidence level **L1** in
 > this catalogue and cited `handle_withdraw_terminates` as the harness backing
 > it. That harness proves termination and target-state correctness; it contains
@@ -72,6 +70,8 @@ catalogue's history.
 > catalogue, because it is trusted; the propagation gap is recorded as an open
 > process defect.
 
+| id | Claim | Value | Level | Artefact | Falsifier |
+|---|---|---|---|---|---|
 | **C-1** | End-to-end worst-case response time, upper bound | **≤ 1000 µs** | **L1** | [`axonos-scheduler` BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-scheduler/kani-proofs/src/main.rs) — the bounded-model-checking proofs of the response-time analysis from which the bound is derived for the reference pipeline's verified per-task WCETs | A reachable schedule, within the model's admissible inputs, whose response time exceeds 1000 µs |
 | **C-1·L2** | End-to-end worst-case response time, worst observed (complement to C-1) | **972 µs** over a 12-hour soak of ≈ 10.8 million epochs, **0 deadline misses** | L2 | Soak trace — **publication pending** (see *Artefact availability* below) | A soak under the stated conditions on the reference hardware observing a response time above 972 µs, or any deadline miss |
 | **C-2** | Observation-cadence jitter, one standard deviation | **2.1 µs** | **L2** | Soak trace — **publication pending** | A soak under the stated conditions measuring σ above 2.1 µs |
