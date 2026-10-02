@@ -1,5 +1,7 @@
 # The AxonOS Standard
 
+[![AxonOS Radar](https://img.shields.io/endpoint?url=https%3A%2F%2Faxonos-bci.github.io%2Faxonos-community-radar%2Fbadges%2FAxonOS-org%2Faxonos-standard.json&style=flat-square)](https://axonos-bci.github.io/axonos-community-radar/)
+
 **Version 1.1.0** — the canonical open technical standard for deterministic brain-computer interface software.
 
 **Editor:** Denis Yermakou · **Project:** AxonOS
