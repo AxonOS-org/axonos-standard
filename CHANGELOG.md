@@ -1,12 +1,27 @@
 # Changelog and Release Record — The AxonOS Standard
 
-**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS
+**AxonOS Standard v1.1.1** · **Editor:** Denis Yermakou · **Project:** AxonOS
 
 This document records the release history of the AxonOS Standard. Every release is recorded here, and every change in a release is traceable, through the governance process of `GOVERNANCE.md`, to the Request-for-Comments document that introduced it.
 
 For the first canonical release, version 1.0.0, this document additionally serves as a comprehensive release record: because version 1.0.0 introduces the entire Standard at once, with no prior version against which to record incremental change, the most useful thing this document can do is set out, completely, what version 1.0.0 establishes — what each document contains, what the load-bearing design decisions are, what the honest status of each forward-looking element is — so that a reader returning to this changelog in future, after subsequent releases have recorded their incremental changes against it, can see precisely what the foundation was.
 
 ---
+
+## Version 1.1.1 — 2026-10-09
+
+Version 1.1.1 is a **patch**: an erratum that changes no requirement, relaxes no bound and changes no conformance criterion. It corrects statements of fact about the reference implementation that the evidence does not support. Every DC clause keeps its bound and its required evidence level.
+
+### Corrected
+
+- **The reference implementation's timing status.** `STANDARD.md` Sections 8.2, 8.3 and 9.3, `VALIDATION.md` Sections 5.2, 7.3, 8 and 9, `ROADMAP.md`, and the architecture chapters on the kernel, scheduling and consent described the reference implementation as holding an L1 proof of a 1000-microsecond worst-case response time, a 0.5-microsecond slot latency and a consent-transition cycle bound, and L2 soak measurements of 972 microseconds, 2.1 microseconds of jitter and 0.2 microseconds of slot latency. None of that is supported by a published artefact. A bounded model checker over Rust MIR does not produce a time; the reference response-time analysis is unpublished, uses nominal execution times and omits interrupt and blocking terms; and no reference-hardware trace exists. The passages now state that the reference implementation **claims no clause of the dual-core contract** at this version.
+- **`VALIDATION.md` Section 7.3** described the AxonOS harness as modelling worst-case cache, branch-predictor and interrupt behaviour. No AxonOS harness does that. The section now states what a bounded model checker over the intermediate representation can and cannot establish.
+- **`CLAIMS.md`.** The timing rows C-1·L2, C-2, C-3·L2, C-4·L2 and C-5 are withdrawn, because the traces they cited as pending do not exist. C-1 and C-3, tagged *analytical* — a tag `STANDARD.md` Section 22 does not admit — are recorded as not claimed. The three L1 rows remain, each with its domain stated, and the kernel rows now say that CI re-runs their harnesses as an advisory job on every push and as a blocking gate on release tags.
+- **Appendix D** now records that its seven-way per-stage split is illustrative — RFC-0001 publishes the pipeline as one 640.2-microsecond task, and the split was withdrawn from `axonos-hal` 0.2.0 as invented (D1) — and that the reference kernel's firmware admits a different task set.
+
+### Recorded as open
+
+- `STANDARD.md` Section 22 defines L1 over the entire admissible input space, while Section 23 speaks of a stated domain, and every L1 row in the catalogue proves its property over a bounded domain. The catalogue states each domain; resolving the wording is a normative question for the next minor version, by RFC.
 
 ## Version 1.1.0 — 2026-06-06
 

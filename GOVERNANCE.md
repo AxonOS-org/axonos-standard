@@ -1,4 +1,4 @@
-# Governance — The AxonOS Standard, Version 1.1.0
+# Governance — The AxonOS Standard, Version 1.1.1
 
 **Status:** Normative · **Companion to:** `STANDARD.md` · **License:** CC-BY-SA-4.0
 
@@ -240,9 +240,9 @@ The Foundation will hold the assets whose stewardship requires an institution ra
 
 The Foundation's purpose is stewardship of an open standard, and its constitution will constrain it accordingly. The Foundation will not be permitted to take the Standard closed — the open licensing is a constitutional commitment and binds the Foundation as it binds every governing body. The Foundation will not be permitted to weaken the privacy prohibitions or the evidence discipline by ordinary means, for the same reason. The Foundation will not be a vendor: it stewards the Standard and the reference implementation, and it does not compete with the implementers who build on the Standard. The Foundation is designed to be a steward, and its constitution will be written to keep it one.
 
-### 7.4 The honest status at version 1.1.0
+### 7.4 The honest status at version 1.1.1
 
-At version 1.1.0, the AxonOS Standard is in Phase A. The Foundation does not yet exist; the technical steering committee does not yet exist; the founding maintainer is the governing body. This document describes Phase B and Phase C, and the gates between the phases, as a *commitment* — a published, advance commitment to the path the governance will take — and not as a description of a present state. The honest status is that the transition is designed and committed, and that its first gate, the gate to Phase B, will be met when the Standard has stabilised and an independent implementation exists. The Project records this honestly, here, because a governance document that described an aspirational future as though it were a present fact would have failed, in its own first substantive section, the discipline of honest claims that the Standard exists to uphold.
+At version 1.1.1, the AxonOS Standard is in Phase A. The Foundation does not yet exist; the technical steering committee does not yet exist; the founding maintainer is the governing body. This document describes Phase B and Phase C, and the gates between the phases, as a *commitment* — a published, advance commitment to the path the governance will take — and not as a description of a present state. The honest status is that the transition is designed and committed, and that its first gate, the gate to Phase B, will be met when the Standard has stabilised and an independent implementation exists. The Project records this honestly, here, because a governance document that described an aspirational future as though it were a present fact would have failed, in its own first substantive section, the discipline of honest claims that the Standard exists to uphold.
 
 ---
 
@@ -328,7 +328,7 @@ The process is open. Anyone may file an RFC, and an RFC from an independent impl
 
 This is the scenario the transition design exists to guard against, and the honest answer is that an early departure would be a difficult moment — which is precisely why the governance commits, in advance, to the transition rather than leaving succession unplanned. If the founding maintainer departed during Phase A, the community of implementers and the open repository would remain: the Standard is openly licensed, its full history and governance record are in a repository anyone may clone, and a successor maintainer or an early-formed steering committee could continue the governance from the public record. The departure would be difficult but not fatal, because the governance has been designed, from version 1.1.0, so that nothing essential exists only in one person's keeping.
 
-**"Why is the Foundation not constituted now, at version 1.1.0?"**
+**"Why is the Foundation not constituted now, at version 1.1.1?"**
 
 Because a foundation constituted before there is a community to serve and a body of proven practice to institutionalise would be a shell — a legal entity with a constitution but without the substance a constitution is meant to govern. The Phase-B-to-Phase-C gate requires a community of implementers and users substantial enough to constitute a membership, and a demonstrated period of functioning distributed governance, precisely because a foundation is constituted to institutionalise something real. The governance commits to the Foundation and defines the path to it; it declines to constitute it prematurely, and Section 7.4 records that honest status rather than dressing an intention as an accomplishment.
 

@@ -1,6 +1,6 @@
 # Roadmap — The AxonOS Standard
 
-**AxonOS Standard v1.1.0** · **Editor:** Denis Yermakou · **Project:** AxonOS
+**AxonOS Standard v1.1.1** · **Editor:** Denis Yermakou · **Project:** AxonOS
 
 *This document is **informative**. It imposes no requirement and defines no
 conformance criterion. It describes the AxonOS Project's intended path forward
@@ -38,11 +38,15 @@ and not when a calendar says so.
 
 ## The honest starting point
 
-At version 1.1.0, the Standard's status is exactly what `VALIDATION.md` records
-and no more. The headline real-time claims of the reference implementation are
-held at **L1 and L2**: the worst-case response-time bound is proven over the
-admissible input space and corroborated by a soak measurement on reference
-hardware. The Project holds **no L3 claim**, because no genuinely independent
+At version 1.1.1, the Standard's status is exactly what `CLAIMS.md` records
+and no more. The reference implementation holds three **L1** claims, each a
+property of code proven over a stated domain — scheduler admission and
+selection, the single-producer single-consumer slot, and the consent state
+machine. It holds **no timing claim**: no proof of its worst-case response time,
+and no published measurement on reference hardware, so it claims no clause of
+the dual-core contract (`STANDARD.md` Section 9.3). Earlier text here said the
+response-time bound was proven and corroborated by a soak; that was wrong, and
+the figures are withdrawn. The Project holds **no L3 claim**, because no genuinely independent
 reproduction has yet been performed, and the claims catalogue records that
 absence rather than disguising an L2 measurement as an L3 result. The
 governance is in its **first phase**: stewardship rests with the founding

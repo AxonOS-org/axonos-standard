@@ -1,6 +1,6 @@
 # The AxonOS Standard
 
-**Version 1.1.0** — Canonical Technical Standard for Deterministic Brain-Computer Interface Software
+**Version 1.1.1** — Canonical Technical Standard for Deterministic Brain-Computer Interface Software
 
 **Status:** Normative · **Date:** 2026-06-06 · **License:** CC-BY-SA-4.0
 
@@ -10,7 +10,7 @@
 
 ## Preface
 
-This document is the canonical normative text of the **AxonOS Standard**, the open technical standard for deterministic brain-computer interface (BCI) software. It defines the architecture, real-time guarantees, capability system, consent semantics, application binary interface, validation methodology, and conformance requirements that a software implementation must satisfy in order to declare itself conformant with version 1.1.0 of the AxonOS Standard.
+This document is the canonical normative text of the **AxonOS Standard**, the open technical standard for deterministic brain-computer interface (BCI) software. It defines the architecture, real-time guarantees, capability system, consent semantics, application binary interface, validation methodology, and conformance requirements that a software implementation must satisfy in order to declare itself conformant with version 1.1.1 of the AxonOS Standard.
 
 The Standard exists because the software layer that mediates between neural acquisition hardware and intelligent applications is, at the time of this writing, undefined. There is no shared contract describing how a BCI's signal-processing substrate must behave with respect to timing, how it must structure access to neural data, how it must enforce a user's revocation of consent, or how its quantitative claims must be evidenced. Every BCI software stack reinvents these decisions privately, with the consequence that no two stacks are interoperable, no claim made by one stack is verifiable against another, and no regulator, clinician, or researcher can reason about a BCI's software behaviour without access to that specific vendor's private documentation.
 
@@ -204,7 +204,7 @@ The **application binary interface**, abbreviated ABI, is the byte-exact, versio
 
 ### 4.1 What it means to be conformant
 
-An implementation is **conformant with version 1.1.0 of the AxonOS Standard** if and only if it satisfies every normative **MUST** and **MUST NOT** requirement of this Standard that applies to the components it implements, and passes the conformance suite defined in `CONFORMANCE.md` at the corresponding repository tag.
+An implementation is **conformant with version 1.1.1 of the AxonOS Standard** if and only if it satisfies every normative **MUST** and **MUST NOT** requirement of this Standard that applies to the components it implements, and passes the conformance suite defined in `CONFORMANCE.md` at the corresponding repository tag.
 
 The phrase "that applies to the components it implements" is important. This Standard governs a kernel, a software development kit, a consent subsystem, and optionally a Cognitive Hypervisor and a swarm-coordination layer. An implementation need not implement all of these. A project that implements only a conformant kernel, and relies on the reference software development kit, is assessed for conformance only against the kernel requirements and the requirements of the contracts the kernel participates in. The conformance suite is structured, in `CONFORMANCE.md`, so that the relevant subset of tests can be run against a partial implementation.
 
@@ -228,7 +228,7 @@ When this Standard says that the intent observation record **MUST** be exactly t
 
 ### 4.4 Conformance is per-version
 
-Conformance is always conformance with a specific version of this Standard. An implementation conformant with version 1.1.0 is not thereby conformant with a hypothetical future version 2.0.0, nor with a past version. When an implementation declares conformance, it **MUST** state the version, and a bare claim of "AxonOS conformance" without a version is incomplete and SHOULD be read as a claim about the latest version current at the time the claim was made.
+Conformance is always conformance with a specific version of this Standard. An implementation conformant with version 1.1.1 is not thereby conformant with a hypothetical future version 2.0.0, nor with a past version. When an implementation declares conformance, it **MUST** state the version, and a bare claim of "AxonOS conformance" without a version is incomplete and SHOULD be read as a claim about the latest version current at the time the claim was made.
 
 ### 4.5 Loss of conformance
 
@@ -420,9 +420,11 @@ The phrase "every admissible input and every admissible machine state" is essent
 
 A conformant kernel's worst-case response time **MUST** be established at evidence level L1, as that level is defined in Section 22 — that is, by a formal argument, machine-checked, that covers every admissible input rather than a sample of inputs.
 
-The reference implementation establishes its worst-case response time using a bounded model checker, a tool that explores the entire space of admissible inputs symbolically and either proves that the bound holds for every one of them or produces a concrete input for which it fails. The Standard does not mandate a specific tool; it mandates the property — a machine-checked proof over the entire input space — and any tool that delivers that property is acceptable. Section 22 elaborates the evidence levels and the acceptable tools.
+The Standard does not mandate a specific tool; it mandates the property — a machine-checked proof that the bound holds over the entire admissible input space — and any tool that delivers that property is acceptable. Section 22 elaborates the evidence levels.
 
-A worst-case response time established only by measurement — by running the pipeline many times and taking the slowest observed time — is an evidence-level-L2 claim, not L1, and is **NOT** sufficient on its own to satisfy the requirement of this section. Measurement is valuable; the reference implementation measures extensively, and Section 9 requires certain clauses to carry L2 measured evidence in addition to L1 proof. But measurement alone cannot establish a worst-case response time, because measurement samples the input space and the worst case may lie in an unsampled region. The requirement of this section is for an L1 proof, and L2 measurement is a complement to that proof, not a substitute for it.
+*Status of the reference implementation (informative, corrected at version 1.1.1).* The reference implementation does **not** hold such a proof. Its bounded-model-checking harnesses prove properties of the scheduler's decision logic — admission, earliest-deadline selection, monotonicity of the demand-bound function — over bounded inputs; a bounded model checker over Rust MIR does not produce a time, so those harnesses do not establish a worst-case response time. The reference implementation's response-time figure is an unpublished response-time analysis over nominal worst-case execution times, which is not an evidence level of Section 22. The reference implementation therefore does not satisfy the requirement of this section at this version, and `CLAIMS.md` records that state. Earlier text of this subsection said otherwise; it was wrong.
+
+A worst-case response time established only by measurement — by running the pipeline many times and taking the slowest observed time — is an evidence-level-L2 claim, not L1, and is **NOT** sufficient on its own to satisfy the requirement of this section. Measurement is valuable, and Section 9 requires certain clauses to carry L2 measured evidence in addition to L1 proof. But measurement alone cannot establish a worst-case response time, because measurement samples the input space and the worst case may lie in an unsampled region. The requirement of this section is for an L1 proof, and L2 measurement is a complement to that proof, not a substitute for it.
 
 ### 8.3 The composition of the bound
 
@@ -432,7 +434,7 @@ The worst-case response time of the whole pipeline is, in the reference analysis
 
 In a preemptive system, a task's response time is not merely its own execution time; it is its own execution time plus the time during which it is preempted by tasks with nearer deadlines. The reference analysis accounts for this by the standard response-time recurrence: the response time of a task is computed as its own worst-case execution time plus the sum of the interference from every task that can preempt it, where the interference from a preempting task is the number of times that task can be released during the response-time window multiplied by that task's worst-case execution time. The recurrence is solved iteratively, converging to a fixed point, and the fixed point is the task's worst-case response time. The worst-case response time of the whole pipeline is then bounded by the analysis of the last task to complete in the epoch.
 
-The reference analysis additionally accounts for interference from interrupts, for the blocking that can occur when a task accesses a resource shared with the inter-process-communication publication task, and for the micro-architectural effects — cache misses, pipeline stalls — that the periodic-task model abstracts away. Each of these contributions is bounded conservatively, and the conservative bounds are what the factor-of-four utilisation margin of Section 7.3 absorbs. The detailed analysis, with the recurrence worked through for the reference task set, is in the architecture chapter on scheduling; Appendix D records the resulting numbers.
+A complete analysis must additionally account for interference from interrupts, for the blocking that can occur when a task accesses a resource shared with the inter-process-communication publication task, and for the micro-architectural effects — cache misses, pipeline stalls — that the periodic-task model abstracts away. At version 1.1.1 the reference analysis does **not** yet include interrupt interference or blocking as terms ([axonos-kernel#1](https://github.com/AxonOS-org/axonos-kernel/issues/1)), and its per-task worst-case execution times are nominal values, not measurements. The factor-of-four utilisation margin of Section 7.3 is headroom reserved for these effects; it is not a bound on them. The recurrence, worked through for an illustrative task set, is in the architecture chapter on scheduling; Appendix D records the nominal reference task set.
 
 ## Section 9. The dual-core real-time contract
 
@@ -462,13 +464,17 @@ The evidence-level annotation on each clause is itself a normative requirement. 
 
 A claim of conformance with the dual-core contract **MUST** be accompanied, in the implementation's published material, by the evidence artefact for each clause at the level the clause requires: the proof artefact for the L1 clauses, the soak-test trace for the L2 clauses. The companion `VALIDATION.md` defines the form these artefacts take and the catalogue in which they are recorded.
 
-### 9.3 The reference implementation's measured values
+### 9.3 The reference implementation's status against the contract
 
-*This subsection is informative.*
+*This subsection is informative. It was rewritten at version 1.1.1; the earlier text stated measured and proven values that no published artefact supports.*
 
-The reference implementation, on the reference hardware, satisfies the dual-core contract with the following measured values, recorded here for the reader's orientation. The authoritative, evidence-linked catalogue is in `VALIDATION.md`.
+At version 1.1.1 the reference implementation **claims no clause** of the dual-core contract. For each clause, the evidence the clause requires is absent:
 
-For DC1, the L1-proven upper bound is 1000 microseconds and the L2-measured worst observed value, over a twelve-hour soak comprising approximately 10.8 million epochs, is 972 microseconds, with zero deadline misses. For DC2, the measured jitter is 2.1 microseconds at one sigma. For DC3, the L1-proven bound is 0.5 microseconds and the measured value is 0.2 microseconds. The reference implementation thus satisfies every clause with margin, and the margin is itself part of the evidence: a system that satisfied the contract with no margin would be a system whose next minor revision would likely violate it.
+- **DC1** and **DC3** require L1. The reference implementation holds only an unpublished response-time analysis over nominal worst-case execution times, which is not an evidence level of Section 22 (see Section 8.2).
+- **DC2**, **DC5** and **DC6** require L2. No soak trace on the reference hardware has been published, so no measured value is claimed.
+- **DC4** requires L1. No harness proves the deadline-miss detection latency.
+
+Figures that earlier versions of this document and of the project's public material gave for these clauses — a 972-microsecond worst observed response time, 2.1-microsecond jitter, a 0.2-microsecond slot latency — are withdrawn: no published trace supports them, and the publishing rule of `VALIDATION.md` Section 2 forbids them. The authoritative state, claim by claim, is in `CLAIMS.md`. A clause becomes claimed when its artefact is published at the level the clause requires, and not before.
 
 ## Section 10. Inter-process communication
 
@@ -788,7 +794,7 @@ Code 0x01, **version mismatch**: the handshake of Section 18 found differing ver
 
 **Level L2**, *measured on reference hardware*: the claim is a value measured on the reference hardware, under stated conditions, with the measurement trace published. The artefact is the trace, together with the post-processing that derived the headline number. A measurement on hardware other than the reference hardware is not L2.
 
-**Level L3**, *independently validated*: the claim is an L2 measurement that has additionally been reproduced by an independent third party, on a separate instance of the reference hardware, and witnessed by a signed report. The artefact is the signed report identifying the reviewer, the date, the hardware, and the verdict. The AxonOS Project makes no L3 claim at version 1.1.0; the companion `VALIDATION.md` records this and identifies the first L3 claim the Project intends to produce.
+**Level L3**, *independently validated*: the claim is an L2 measurement that has additionally been reproduced by an independent third party, on a separate instance of the reference hardware, and witnessed by a signed report. The artefact is the signed report identifying the reviewer, the date, the hardware, and the verdict. The AxonOS Project makes no L3 claim at version 1.1.1; the companion `VALIDATION.md` records this and identifies the first L3 claim the Project intends to produce.
 
 ## Section 23. Falsifiability
 
@@ -796,7 +802,7 @@ Code 0x01, **version mismatch**: the handshake of Section 18 found differing ver
 
 ## Section 24. Conformance criteria
 
-*This subsection is normative.* An implementation is conformant with version 1.1.0 of this Standard if and only if it satisfies every applicable normative requirement of Sections 5 through 23 and Sections 26 through 31, and passes the conformance suite defined in `CONFORMANCE.md` at the corresponding repository tag. The conformance suite is the executable expression of the Standard's requirements; the companion document defines its 57 tests, organised in six categories corresponding to the real-time contract, the capability system, the consent state machine, the wire format, the error taxonomy, and the validation policy.
+*This subsection is normative.* An implementation is conformant with version 1.1.1 of this Standard if and only if it satisfies every applicable normative requirement of Sections 5 through 23 and Sections 26 through 31, and passes the conformance suite defined in `CONFORMANCE.md` at the corresponding repository tag. The conformance suite is the executable expression of the Standard's requirements; the companion document defines its 57 tests, organised in six categories corresponding to the real-time contract, the capability system, the consent state machine, the wire format, the error taxonomy, and the validation policy.
 
 ## Section 25. Self-certification and Foundation review
 
@@ -852,7 +858,7 @@ Code 0x01, **version mismatch**: the handshake of Section 18 found differing ver
 
 ## Appendix D — The reference task set
 
-*Informative.* The reference task set comprises seven tasks. The Kalman-filter state update has a worst-case execution time of 80 microseconds and a period of 4 milliseconds. The finite-impulse-response filter, 320 microseconds and 4 milliseconds. The notch filter, 40 microseconds and 4 milliseconds. The artefact-rejection stage, 15 microseconds and 4 milliseconds. The common-spatial-pattern feature extractor, 160 microseconds and 4 milliseconds. The linear-discriminant classifier, 25 microseconds and 4 milliseconds. The inter-process-communication publication task, 0.2 microseconds and 4 milliseconds. The total worst-case execution time per epoch is approximately 640 microseconds, and the total utilisation is approximately 0.160, within the 0.25 ceiling of Section 7.3.
+*Informative.* The reference task set comprises seven tasks. The Kalman-filter state update has a worst-case execution time of 80 microseconds and a period of 4 milliseconds. The finite-impulse-response filter, 320 microseconds and 4 milliseconds. The notch filter, 40 microseconds and 4 milliseconds. The artefact-rejection stage, 15 microseconds and 4 milliseconds. The common-spatial-pattern feature extractor, 160 microseconds and 4 milliseconds. The linear-discriminant classifier, 25 microseconds and 4 milliseconds. The inter-process-communication publication task, 0.2 microseconds and 4 milliseconds. The total worst-case execution time per epoch is approximately 640 microseconds, and the total utilisation is approximately 0.160, within the 0.25 ceiling of Section 7.3. These worst-case execution times are not measurements, and the per-stage split is not published evidence: RFC-0001 publishes the pipeline as a single 640.2-microsecond task derived from instruction counts, and the same seven-way split was withdrawn from `axonos-hal` 0.2.0 as invented (retraction D1). The table is kept here only as an illustration of the arithmetic. The reference kernel's firmware (`axonos-kernel`, `axonos-firmware-stm32f407`) currently admits a different nominal set — five tasks, 642, 12, 18 and 24 microseconds at a 4-millisecond period and 100 microseconds at one second, utilisation approximately 0.174 — and the two will be reconciled when the worst-case execution times are measured.
 
 ## Appendix E — Bibliography
 
@@ -860,7 +866,7 @@ Code 0x01, **version mismatch**: the handshake of Section 18 found differing ver
 
 ---
 
-**End of the AxonOS Standard, version 1.1.0.**
+**End of the AxonOS Standard, version 1.1.1.**
 
 *This document is the canonical normative text. Any rendering of it in another medium is informative. In the event of disagreement between this file, at the tagged commit, and any rendering, this file governs.*
 
