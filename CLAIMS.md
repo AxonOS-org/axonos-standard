@@ -79,6 +79,8 @@ catalogue's history.
 > catalogue, because it is trusted; the propagation gap is recorded as an open
 > process defect.
 
+<!-- next correction -->
+
 > **Correction, published 2026-10-02.** `axonos-consent` 0.9.0 removed the five
 > harnesses under `kani/`. They had never been compiled into the crate, so the
 > artefact C-4·L1 cited had never run. The same release withdrew the ≤ 1648-cycle
@@ -92,6 +94,8 @@ catalogue's history.
 > cannot produce a time: the harnesses behind both rows prove decision logic and
 > loop-free structure, not durations. Both figures are re-graded **analytical**,
 > and new rows C-1·L1 and C-3·L1 record what the harnesses do prove.
+
+<!-- next correction -->
 
 > **Correction, published 2026-10-09.** Two defects are corrected here, and
 > with them every row that depended on a timing figure.
